@@ -7,7 +7,7 @@
     <authors>Adam Craven</authors>
     <owners>Adam Craven</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
-    <projectUrl>https://channeladamcore.codeplex.com</projectUrl>
+    <projectUrl>https://github.com/channeladam/ChannelAdam.Soap</projectUrl>
     <iconUrl>https://devzone.channeladam.com/img/channeladam/channeladam-logo.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A fluent API for easily building SOAP 1.1 and SOAP 1.2 messages.</description>
@@ -18,6 +18,7 @@
     <tags>SOAP 1.1, SOAP 1.2, fluent, maker, builder, PCL, portable</tags>
   </metadata>
   <files>
+    <!-- See this for how to structure PCLs: http://log.paulbetts.org/the-bait-and-switch-pcl-trick/ -->
     <file src="bin\Release\**\ChannelAdam.Soap.dll" target="lib\portable-net403+sl50+netcore45+wpa81+wp8" />
     <file src="bin\Release\**\ChannelAdam.Soap.pdb" target="lib\portable-net403+sl50+netcore45+wpa81+wp8" />
     <file src="**\*.cs" exclude="obj\**\*;bin\**\*" target="src" />
