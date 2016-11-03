@@ -17,6 +17,7 @@
 
 namespace ChannelAdam.Soap
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml;
@@ -34,16 +35,19 @@ namespace ChannelAdam.Soap
 
         #region CreateSoapEnvelopeWithFault
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapEnvelopeWithFault(Soap11FaultCode code, string faultString)
         {
             return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, faultString)));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapEnvelopeWithFault(Soap11FaultCode code, string faultString, string faultActor)
         {
             return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, faultString, faultActor)));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapEnvelopeWithFault(Soap11FaultCode code, string faultString, string faultActor, IEnumerable<XContainer> detailEntries)
         {
             return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, faultString, faultActor, detailEntries)));
@@ -53,16 +57,19 @@ namespace ChannelAdam.Soap
 
         #region CreateSoapBodyWithFault
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapBodyWithFault(Soap11FaultCode code, string faultString)
         {
             return CreateSoapBody(CreateSoapFault(code, faultString));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapBodyWithFault(Soap11FaultCode code, string faultString, string faultActor)
         {
             return CreateSoapBody(CreateSoapFault(code, faultString, faultActor));
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapBodyWithFault(Soap11FaultCode code, string faultString, string faultActor, IEnumerable<XContainer> detailEntries)
         {
             return CreateSoapBody(CreateSoapFault(code, faultString, faultActor, detailEntries));
@@ -72,16 +79,19 @@ namespace ChannelAdam.Soap
 
         #region CreateSoapFault
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapFault(Soap11FaultCode code, string faultString)
         {
             return CreateSoapFault(code, faultString, null, null);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapFault(Soap11FaultCode code, string faultString, string faultActor)
         {
             return CreateSoapFault(code, faultString, faultActor, null);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         public static XElement CreateSoapFault(Soap11FaultCode code, string faultString, string faultActor, IEnumerable<XContainer> detailEntries)
         {
             var fault = new XElement(Soap11Constants.SoapEnvelopeNamespace + "Fault");
@@ -206,6 +216,11 @@ namespace ChannelAdam.Soap
 
         public static void SetSoapEncodingAttribute(XElement node, string soapEncodingNamespace)
         {
+            if (node == null)
+            {
+                throw new ArgumentNullException(nameof(node));
+            }
+
             node.SetAttributeValue(Soap11Constants.SoapEnvelopeNamespace + "soapEncoding", soapEncodingNamespace);
         }
 
@@ -216,7 +231,7 @@ namespace ChannelAdam.Soap
 
         public static void SetWebServicesAddressingNamespaceAttribute(XElement node, string attributeName)
         {
-            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.WebServicesAddressing.NamespaceName);
+            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.WebServicesAddressing);
         }
 
         public static void SetXmlNamespaceAttribute(XElement node)
@@ -226,7 +241,7 @@ namespace ChannelAdam.Soap
 
         public static void SetXmlNamespaceAttribute(XElement node, string attributeName)
         {
-            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.Xml.NamespaceName);
+            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.Xml);
         }
 
         public static void SetXmlSchemaNamespaceAttribute(XElement node)
@@ -236,7 +251,7 @@ namespace ChannelAdam.Soap
 
         public static void SetXmlSchemaNamespaceAttribute(XElement node, string attributeName)
         {
-            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.XmlSchema.NamespaceName);
+            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.XmlSchema);
         }
 
         public static void SetXmlSchemaInstanceNamespaceAttribute(XElement node)
@@ -246,7 +261,7 @@ namespace ChannelAdam.Soap
 
         public static void SetXmlSchemaInstanceNamespaceAttribute(XElement node, string attributeName)
         {
-            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.XmlSchemaInstance.NamespaceName);
+            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.XmlSchemaInstance);
         }
 
         #endregion CreateSoapEnvelope
@@ -262,7 +277,7 @@ namespace ChannelAdam.Soap
 
         private static XAttribute CreateSoapEnvelopeAttribute()
         {
-            return new XAttribute(XNamespace.Xmlns + NamespacePrefixConstants.SoapEnvelope, Soap11Constants.SoapEnvelopeNamespace.NamespaceName);
+            return new XAttribute(XNamespace.Xmlns + NamespacePrefixConstants.SoapEnvelope, Soap11Constants.SoapEnvelopeNamespace);
         }
 
         #endregion Private Methods

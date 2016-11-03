@@ -21,10 +21,24 @@ namespace ChannelAdam.Soap
 
     public static class Soap11Constants
     {
+        #region Public Fields
+
         public static readonly string ContentType = "text/xml";
 
-        public static readonly XNamespace SoapEncodingStandardNamespace = "http://schemas.xmlsoap.org/soap/encoding/";
+        #endregion Public Fields
 
-        public static readonly XNamespace SoapEnvelopeNamespace = "http://schemas.xmlsoap.org/soap/envelope/";
+        #region Public Properties
+
+        public static XNamespace SoapEncodingStandardNamespace
+        {
+            get { return "http://schemas.xmlsoap.org/soap/encoding/"; }
+        }
+
+        public static XNamespace SoapEnvelopeNamespace
+        {
+            get { return "http://schemas.xmlsoap.org/soap/envelope/"; }
+        }
+
+        #endregion Public Properties
     }
 }

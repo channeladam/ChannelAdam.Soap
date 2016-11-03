@@ -38,10 +38,16 @@ namespace ChannelAdam.Soap
             return SerialiseObject(toSerialise, toElementName, toElementNamespace, settings);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification = "Odd")]
         public static string SerialiseObject(object toSerialise, string toElementName, string toElementNamespace, XmlWriterSettings xmlWriterSettings)
         {
             string result = null;
             StringWriter stringWriter = null;
+
+            if (toSerialise == null)
+            {
+                throw new ArgumentNullException(nameof(toSerialise));
+            }
 
             var objectType = toSerialise.GetType();
             var newRootAttribute = CreateXmlRootAttribute(objectType, toElementName, toElementNamespace);
@@ -74,6 +80,16 @@ namespace ChannelAdam.Soap
         #endregion Public Methods
 
         #region Private Methods
+
+        private static XmlAttributeOverrides CreateXmlAttributeOverrides(Type objectType, XmlRootAttribute newRootAttribute)
+        {
+            var xmlAttributeOverrides = new XmlAttributeOverrides();
+            var xmlAttributes = new XmlAttributes();
+            xmlAttributes.XmlRoot = newRootAttribute;
+            xmlAttributeOverrides.Add(objectType, xmlAttributes);
+
+            return xmlAttributeOverrides;
+        }
 
         private static XmlRootAttribute CreateXmlRootAttribute(Type objectType, string elementName, string xmlNamespace = null)
         {
@@ -113,17 +129,6 @@ namespace ChannelAdam.Soap
 
             return result;
         }
-
-        private static XmlAttributeOverrides CreateXmlAttributeOverrides(Type objectType, XmlRootAttribute newRootAttribute)
-        {
-            var xmlAttributeOverrides = new XmlAttributeOverrides();
-            var xmlAttributes = new XmlAttributes();
-            xmlAttributes.XmlRoot = newRootAttribute;
-            xmlAttributeOverrides.Add(objectType, xmlAttributes);
-
-            return xmlAttributeOverrides;
-        }
-
         #endregion Private Methods
     }
 }

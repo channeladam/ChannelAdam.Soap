@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Soap11FaultCode.cs">
+// <copyright file="NamespacePrefixConstants.cs">
 //     Copyright (c) 2016 Adam Craven. All rights reserved.
 // </copyright>
 //
@@ -17,26 +17,18 @@
 
 namespace ChannelAdam.Soap
 {
-    public enum Soap11FaultCode
+    public static class NamespacePrefixConstants
     {
-        /// <summary>
-        /// Version mismatch fault.
-        /// </summary>
-        VersionMismatch = 1,
+        #region Public Fields
 
-        /// <summary>
-        /// Must understand fault.
-        /// </summary>
-        MustUnderstand,
+        public static readonly string SoapEnvelope = "env";
 
-        /// <summary>
-        /// Client fault.
-        /// </summary>
-        Client,
+        public static readonly string WebServicesAddressing = "wsa";
 
-        /// <summary>
-        /// Server fault.
-        /// </summary>
-        Server
+        public static readonly string Xml = "xml";
+        public static readonly string XmlSchema = "xsd";
+        public static readonly string XmlSchemaInstance = "xsi";
+
+        #endregion Public Fields
     }
 }

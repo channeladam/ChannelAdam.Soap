@@ -21,13 +21,38 @@ namespace ChannelAdam.Soap
 
     public static class NamespaceConstants
     {
-        public static readonly XNamespace None = XNamespace.None;
+        #region Public Properties
 
-        public static readonly XNamespace WebServicesAddressing = "http://www.w3.org/2005/08/addressing";
+        public static XNamespace None
+        {
+            get { return XNamespace.None; }
+        }
 
-        public static readonly XNamespace Xml = XNamespace.Xml;
-        public static readonly XNamespace Xmlns = XNamespace.Xmlns;
-        public static readonly XNamespace XmlSchema = "http://www.w3.org/2001/XMLSchema";
-        public static readonly XNamespace XmlSchemaInstance = "http://www.w3.org/2001/XMLSchema-instance";
+        public static XNamespace WebServicesAddressing
+        {
+            get { return "http://www.w3.org/2005/08/addressing"; }
+        }
+
+        public static XNamespace Xml
+        {
+            get { return XNamespace.Xml; }
+        }
+
+        public static XNamespace Xmlns
+        {
+            get { return XNamespace.Xmlns; }
+        }
+
+        public static XNamespace XmlSchema
+        {
+            get { return "http://www.w3.org/2001/XMLSchema"; }
+        }
+
+        public static XNamespace XmlSchemaInstance
+        {
+            get { return "http://www.w3.org/2001/XMLSchema-instance"; }
+        }
+
+        #endregion Public Properties
     }
 }

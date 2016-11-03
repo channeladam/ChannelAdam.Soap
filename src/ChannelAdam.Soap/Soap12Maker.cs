@@ -17,6 +17,7 @@
 
 namespace ChannelAdam.Soap
 {
+    using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
@@ -331,6 +332,11 @@ namespace ChannelAdam.Soap
 
         public static void SetSoapEncodingAttribute(XElement node, string soapEncodingNamespace)
         {
+            if (node == null)
+            {
+                throw new ArgumentNullException(nameof(node));
+            }
+
             node.SetAttributeValue(Soap12Constants.SoapEnvelopeNamespace + "soapEncoding", soapEncodingNamespace);
         }
 
@@ -341,7 +347,7 @@ namespace ChannelAdam.Soap
 
         public static void SetWebServicesAddressingNamespaceAttribute(XElement node, string attributeName)
         {
-            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.WebServicesAddressing.NamespaceName);
+            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.WebServicesAddressing);
         }
 
         public static void SetXmlNamespaceAttribute(XElement node)
@@ -351,7 +357,7 @@ namespace ChannelAdam.Soap
 
         public static void SetXmlNamespaceAttribute(XElement node, string attributeName)
         {
-            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.Xml.NamespaceName);
+            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.Xml);
         }
 
         public static void SetXmlSchemaNamespaceAttribute(XElement node)
@@ -361,7 +367,7 @@ namespace ChannelAdam.Soap
 
         public static void SetXmlSchemaNamespaceAttribute(XElement node, string attributeName)
         {
-            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.XmlSchema.NamespaceName);
+            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.XmlSchema);
         }
 
         public static void SetXmlSchemaInstanceNamespaceAttribute(XElement node)
@@ -371,7 +377,7 @@ namespace ChannelAdam.Soap
 
         public static void SetXmlSchemaInstanceNamespaceAttribute(XElement node, string attributeName)
         {
-            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.XmlSchemaInstance.NamespaceName);
+            node.SetAttributeValue(XNamespace.Xmlns + attributeName, NamespaceConstants.XmlSchemaInstance);
         }
 
         #endregion CreateSoapEnvelope
@@ -387,7 +393,7 @@ namespace ChannelAdam.Soap
 
         private static XAttribute CreateSoapEnvelopeAttribute()
         {
-            return new XAttribute(XNamespace.Xmlns + NamespacePrefixConstants.SoapEnvelope, Soap12Constants.SoapEnvelopeNamespace.NamespaceName);
+            return new XAttribute(XNamespace.Xmlns + NamespacePrefixConstants.SoapEnvelope, Soap12Constants.SoapEnvelopeNamespace);
         }
 
         #endregion Private Methods

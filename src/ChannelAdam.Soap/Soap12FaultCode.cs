@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="NamespacePrefixConstants.cs">
+// <copyright file="Soap12FaultCode.cs">
 //     Copyright (c) 2016 Adam Craven. All rights reserved.
 // </copyright>
 //
@@ -17,14 +17,31 @@
 
 namespace ChannelAdam.Soap
 {
-    public static class NamespacePrefixConstants
+    public enum Soap12FaultCode
     {
-        public static readonly string SoapEnvelope = "env";
+        /// <summary>
+        /// Sender fault.
+        /// </summary>
+        Sender = 0,
 
-        public static readonly string WebServicesAddressing = "wsa";
+        /// <summary>
+        /// Receiver fault.
+        /// </summary>
+        Receiver,
 
-        public static readonly string Xml = "xml";
-        public static readonly string XmlSchema = "xsd";
-        public static readonly string XmlSchemaInstance = "xsi";
+            /// <summary>
+        /// Version mismatch fault.
+        /// </summary>
+        VersionMismatch,
+
+        /// <summary>
+        /// Must understand fault.
+        /// </summary>
+        MustUnderstand,
+
+        /// <summary>
+        /// Data encoding unknown fault.
+        /// </summary>
+        DataEncodingUnknown
     }
 }

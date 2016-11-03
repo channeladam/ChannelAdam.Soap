@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChannelAdam.Soap</RootNamespace>
-    <AssemblyName>ChannelAdam.Soap-PCL</AssemblyName>
+    <AssemblyName>ChannelAdam.Soap</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -27,6 +27,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>..\ChannelAdamCodeAnalysis.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,11 +41,12 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>ChannelAdam.Soap-PCL.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>ChannelAdam.Soap.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="ChannelAdam.Soap-PCL.snk" />
+    <None Include="ChannelAdam.Soap.nuspec" />
+    <None Include="ChannelAdam.Soap.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +75,9 @@
     <Compile Include="SoapBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\CustomDictionary.xml">
+    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
       <Link>CustomDictionary.xml</Link>
-    </Content>
+    </CodeAnalysisDictionary>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets')" />

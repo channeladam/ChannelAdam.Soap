@@ -20,6 +20,7 @@ namespace ChannelAdam.Soap.Abstractions
     using System.Collections.Generic;
     using System.Xml.Linq;
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "BodyBuilder", Justification = "As designed")]
     public interface ISoap12BodyBuilder
     {
         ISoap12EnvelopeBuilder AddEntry(string bodyXml);

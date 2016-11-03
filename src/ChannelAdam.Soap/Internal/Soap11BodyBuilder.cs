@@ -23,6 +23,7 @@ namespace ChannelAdam.Soap.Internal
 
     using Abstractions;
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "BodyBuilder", Justification = "As designed")]
     public class Soap11BodyBuilder : ISoap11BodyBuilder
     {
         #region Private Fields

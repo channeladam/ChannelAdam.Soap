@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Soap12FaultCode.cs">
+// <copyright file="Soap11FaultCode.cs">
 //     Copyright (c) 2016 Adam Craven. All rights reserved.
 // </copyright>
 //
@@ -17,31 +17,26 @@
 
 namespace ChannelAdam.Soap
 {
-    public enum Soap12FaultCode
+    public enum Soap11FaultCode
     {
+        /// <summary>
+        /// Client fault.
+        /// </summary>
+        Client = 0,
+
+        /// <summary>
+        /// Server fault.
+        /// </summary>
+        Server,
+
         /// <summary>
         /// Version mismatch fault.
         /// </summary>
-        VersionMismatch = 1,
+        VersionMismatch,
 
         /// <summary>
         /// Must understand fault.
         /// </summary>
-        MustUnderstand,
-
-        /// <summary>
-        /// Data encoding unknown fault.
-        /// </summary>
-        DataEncodingUnknown,
-
-        /// <summary>
-        /// Sender fault.
-        /// </summary>
-        Sender,
-
-        /// <summary>
-        /// Receiver fault.
-        /// </summary>
-        Receiver
+        MustUnderstand
     }
 }

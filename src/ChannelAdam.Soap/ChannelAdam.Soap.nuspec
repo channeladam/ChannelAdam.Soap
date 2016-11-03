@@ -1,0 +1,25 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>ChannelAdam.Soap</id>
+    <version>1.0.0</version>
+    <title>ChannelAdam SOAP Library (Portable)</title>
+    <authors>Adam Craven</authors>
+    <owners>Adam Craven</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <projectUrl>https://channeladamcore.codeplex.com</projectUrl>
+    <iconUrl>https://devzone.channeladam.com/img/channeladam/channeladam-logo.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>A fluent API for easily building SOAP 1.1 and SOAP 1.2 messages.</description>
+    <releaseNotes>
+1.0.0 - Initial release.
+    </releaseNotes>
+    <copyright>Copyright 2016 Adam Craven</copyright>
+    <tags>SOAP 1.1, SOAP 1.2, fluent, maker, builder, PCL, portable</tags>
+  </metadata>
+  <files>
+    <file src="bin\Release\**\ChannelAdam.Soap.dll" target="lib\portable-net403+sl50+netcore45+wpa81+wp8" />
+    <file src="bin\Release\**\ChannelAdam.Soap.pdb" target="lib\portable-net403+sl50+netcore45+wpa81+wp8" />
+    <file src="**\*.cs" exclude="obj\**\*;bin\**\*" target="src" />
+  </files>
+</package>

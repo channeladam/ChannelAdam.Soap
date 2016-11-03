@@ -103,12 +103,6 @@
     <Compile Include="TestData\XmlObjectWithRootAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChannelAdam.Soap-PCL\ChannelAdam.Soap-PCL.csproj">
-      <Project>{4200eeab-0ec5-4e05-9ecb-2e83ccc77590}</Project>
-      <Name>ChannelAdam.Soap-PCL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="MakingSoap11.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
@@ -119,6 +113,12 @@
       <LastGenOutput>MakingSoap12.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChannelAdam.Soap\ChannelAdam.Soap.csproj">
+      <Project>{4200eeab-0ec5-4e05-9ecb-2e83ccc77590}</Project>
+      <Name>ChannelAdam.Soap</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

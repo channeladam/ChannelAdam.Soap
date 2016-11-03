@@ -20,6 +20,7 @@ namespace ChannelAdam.Soap.Abstractions
     using System.Collections.Generic;
     using System.Xml.Linq;
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "BodyBuilder", Justification = "As designed")]
     public interface ISoap11BodyBuilder
     {
         ISoap11EnvelopeBuilder AddEntry(string bodyXml);
@@ -30,10 +31,13 @@ namespace ChannelAdam.Soap.Abstractions
 
         ISoap11EnvelopeBuilder AddEntry(object toSerialise, string toElementName, string toElementNamespace);
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString);
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string faultActor);
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
         ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string faultActor, IEnumerable<XContainer> detailEntries);
 
         ISoap11EnvelopeBuilder SetStandardSoapEncoding();
