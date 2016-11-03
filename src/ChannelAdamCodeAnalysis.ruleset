@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="ChannelAdamCodeAnalysis" ToolsVersion="14.0">
+  <Include Path="basiccorrectnessrules.ruleset" Action="Default" />
+  <Include Path="basicdesignguidelinerules.ruleset" Action="Default" />
+  <Include Path="extendedcorrectnessrules.ruleset" Action="Default" />
+  <Include Path="extendeddesignguidelinerules.ruleset" Action="Default" />
+  <Include Path="minimumrecommendedrules.ruleset" Action="Default" />
+  <Include Path="securityrules.ruleset" Action="Default" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1020" Action="None" />
+    <Rule Id="CA1031" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="RefactoringEssentials" RuleNamespace="RefactoringEssentials">
+    <Rule Id="RECS0072" Action="None" />
+    <Rule Id="RECS0091" Action="None" />
+  </Rules>
+</RuleSet>
