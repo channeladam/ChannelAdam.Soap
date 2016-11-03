@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>ChannelAdam.Soap</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>ChannelAdam SOAP Library (Portable)</title>
     <authors>Adam Craven</authors>
     <owners>Adam Craven</owners>
@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A fluent API for easily building SOAP 1.1 and SOAP 1.2 messages.</description>
     <releaseNotes>
+1.0.1 - Fixed namespace of SoapBuilder.
 1.0.0 - Initial release.
     </releaseNotes>
     <copyright>Copyright 2016 Adam Craven</copyright>

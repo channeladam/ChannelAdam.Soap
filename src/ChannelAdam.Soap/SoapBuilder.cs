@@ -15,8 +15,9 @@
 // limitations under the License.
 //-----------------------------------------------------------------------
 
-namespace ChannelAdam.Soap.Abstractions
+namespace ChannelAdam.Soap
 {
+    using Abstractions;
     using ChannelAdam.Soap.Internal;
 
     public static class SoapBuilder
