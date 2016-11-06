@@ -1,5 +1,5 @@
 # ChannelAdam.Soap
-A ChannelAdam .NET code library that provides functionality for building SOAP messages.
+A ChannelAdam .NET code library that provides a fluent API for building SOAP 1.1 and SOAP 1.2 messages
 
 Download the "ChannelAdam SOAP Library" NuGet package - https://www.nuget.org/packages/ChannelAdam.Soap
 
