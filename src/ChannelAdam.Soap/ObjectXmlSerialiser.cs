@@ -18,8 +18,8 @@
 namespace ChannelAdam.Soap
 {
     using System;
-    using System.IO;
     using System.Linq;
+    using System.Text;
     using System.Xml;
     using System.Xml.Serialization;
 
@@ -38,11 +38,9 @@ namespace ChannelAdam.Soap
             return SerialiseObject(toSerialise, toElementName, toElementNamespace, settings);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification = "Odd")]
         public static string SerialiseObject(object toSerialise, string toElementName, string toElementNamespace, XmlWriterSettings xmlWriterSettings)
         {
             string result = null;
-            StringWriter stringWriter = null;
 
             if (toSerialise == null)
             {
@@ -55,24 +53,13 @@ namespace ChannelAdam.Soap
 
             var serialiser = new XmlSerializer(objectType, xmlAttributeOverrides);
 
-            try
+            var sb = new StringBuilder();
+            using (var xmlWriter = XmlWriter.Create(sb, xmlWriterSettings))
             {
-                stringWriter = new StringWriter();
-
-                using (var xmlWriter = XmlWriter.Create(stringWriter, xmlWriterSettings))
-                {
-                    serialiser.Serialize(xmlWriter, toSerialise);
-                }
-
-                result = stringWriter.ToString();
+                serialiser.Serialize(xmlWriter, toSerialise);
             }
-            finally
-            {
-                if (stringWriter != null)
-                {
-                    stringWriter.Dispose();
-                }
-            }
+
+            result = sb.ToString();
 
             return result;
         }
