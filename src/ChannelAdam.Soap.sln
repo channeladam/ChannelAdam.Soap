@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehaviourSpecs", "Behaviour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChannelAdam.Soap", "ChannelAdam.Soap\ChannelAdam.Soap.csproj", "{4200EEAB-0EC5-4E05-9ECB-2E83CCC77590}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChannelAdam.Soap.Net40", "ChannelAdam.Soap.Net40\ChannelAdam.Soap.Net40.csproj", "{C3441652-E829-4748-BB71-5BF3934515F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4200EEAB-0EC5-4E05-9ECB-2E83CCC77590}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4200EEAB-0EC5-4E05-9ECB-2E83CCC77590}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4200EEAB-0EC5-4E05-9ECB-2E83CCC77590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3441652-E829-4748-BB71-5BF3934515F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3441652-E829-4748-BB71-5BF3934515F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3441652-E829-4748-BB71-5BF3934515F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3441652-E829-4748-BB71-5BF3934515F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

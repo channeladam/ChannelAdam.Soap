@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="AssemblyInfo.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2017 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("ChannelAdam.Soap")]
-[assembly: AssemblyCopyright("Copyright © 2016")]
+[assembly: AssemblyCopyright("Copyright © 2016-2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
@@ -44,5 +44,5 @@ using System.Resources;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.0.0")]                  // Assembly strong name version
-[assembly: AssemblyFileVersion("1.0.2.0")]              // File version
-[assembly: AssemblyInformationalVersion("1.0.2")]       // NuGet package version / NuSpec $version$
+[assembly: AssemblyFileVersion("1.0.3.0")]              // File version
+[assembly: AssemblyInformationalVersion("1.0.3")]       // NuGet package version / NuSpec $version$

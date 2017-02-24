@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>ChannelAdam.Soap</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>ChannelAdam SOAP Library (Portable)</title>
     <authors>Adam Craven</authors>
     <owners>Adam Craven</owners>
@@ -12,17 +12,20 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A fluent API for easily building SOAP 1.1 and SOAP 1.2 messages.</description>
     <releaseNotes>
+1.0.3 - Added build of a non-portable .NET 4.0 target. Portable requires .NET 4.0.3 as a minimum.
 1.0.2 - Fixed usage of multiple dispose pattern.
 1.0.1 - Fixed namespace of SoapBuilder.
 1.0.0 - Initial release.
     </releaseNotes>
-    <copyright>Copyright 2016 Adam Craven</copyright>
+    <copyright>Copyright 2016-2017 Adam Craven</copyright>
     <tags>SOAP 1.1, SOAP 1.2, fluent, maker, builder, PCL, portable</tags>
   </metadata>
   <files>
     <!-- See this for how to structure PCLs: http://log.paulbetts.org/the-bait-and-switch-pcl-trick/ -->
-    <file src="bin\Release\**\ChannelAdam.Soap.dll" target="lib\portable-net403+sl50+netcore45+wpa81+wp8" />
-    <file src="bin\Release\**\ChannelAdam.Soap.pdb" target="lib\portable-net403+sl50+netcore45+wpa81+wp8" />
+    <file src="..\ChannelAdam.Soap.Net40\bin\Release\ChannelAdam.Soap.dll" target="lib\net40" />
+    <file src="..\ChannelAdam.Soap.Net40\bin\Release\ChannelAdam.Soap.pdb" target="lib\net40" />
+    <file src="bin\Release\ChannelAdam.Soap\ChannelAdam.Soap.dll" target="lib\portable-net403+sl50+netcore45+wpa81+wp8" />
+    <file src="bin\Release\ChannelAdam.Soap\ChannelAdam.Soap.pdb" target="lib\portable-net403+sl50+netcore45+wpa81+wp8" />
     <file src="**\*.cs" exclude="obj\**\*;bin\**\*" target="src" />
   </files>
 </package>
