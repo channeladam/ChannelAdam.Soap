@@ -17,6 +17,7 @@
 
 namespace ChannelAdam.Soap.Internal
 {
+    using System;
     using System.Xml.Linq;
 
     using Abstractions;
@@ -70,6 +71,23 @@ namespace ChannelAdam.Soap.Internal
         {
             this.HeaderElement.Add(headerBlock);
             return this.envelopeBuilder;
+        }
+
+        public ISoap12EnvelopeBuilder AddBlock(string headerBlockXml)
+        {
+            var entry = XElement.Parse(headerBlockXml);
+            this.HeaderElement.Add(entry);
+            return this.envelopeBuilder;
+        }
+
+        public ISoap12EnvelopeBuilder AddBlock(object toSerialise)
+        {
+            return this.AddBlock(ObjectXmlSerialiser.SerialiseObject(toSerialise, null, null));
+        }
+
+        public ISoap12EnvelopeBuilder AddBlock(object toSerialise, string toElementName, string toElementNamespace)
+        {
+            return this.AddBlock(ObjectXmlSerialiser.SerialiseObject(toSerialise, toElementName, toElementNamespace));
         }
 
         public XContainer Build()

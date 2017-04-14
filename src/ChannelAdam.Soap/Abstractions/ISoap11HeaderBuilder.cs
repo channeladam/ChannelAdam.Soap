@@ -22,9 +22,15 @@ namespace ChannelAdam.Soap.Abstractions
     public interface ISoap11HeaderBuilder
     {
         ISoap11EnvelopeBuilder AddAction(string action);
+        
+        ISoap11EnvelopeBuilder AddBlock(string headerBlockXml);
 
         ISoap11EnvelopeBuilder AddBlock(XContainer headerBlock);
+        
+        ISoap11EnvelopeBuilder AddBlock(object toSerialise);
 
+        ISoap11EnvelopeBuilder AddBlock(object toSerialise, string toElementName, string toElementNamespace);
+        
         ISoap11EnvelopeBuilder SetStandardSoapEncoding();
 
         ISoap11EnvelopeBuilder SetCustomSoapEncoding(string soapEncodingNamespace);

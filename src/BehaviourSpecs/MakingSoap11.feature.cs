@@ -197,11 +197,11 @@ testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.Spe
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 090 - Should error when the body is specified as a fault more than" +
                     " once", ((string[])(null)));
-#line 32
-this.ScenarioSetup(scenarioInfo);
-#line 33
-testRunner.When("the body is specified twice as a fault", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 34
+this.ScenarioSetup(scenarioInfo);
+#line 35
+testRunner.When("the body is specified twice as a fault", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 36
 testRunner.Then("there is an error notification about the body being specified more than once", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -215,11 +215,11 @@ testRunner.Then("there is an error notification about the body being specified m
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 091 - Should error when the body is specified twice - as a fault a" +
                     "nd then directly as a body", ((string[])(null)));
-#line 36
-this.ScenarioSetup(scenarioInfo);
-#line 37
-testRunner.When("the body is specified twice - as a fault and then directly as a body entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 38
+this.ScenarioSetup(scenarioInfo);
+#line 39
+testRunner.When("the body is specified twice - as a fault and then directly as a body entry", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 40
 testRunner.Then("there is an error notification about the body being specified more than once", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -233,11 +233,11 @@ testRunner.Then("there is an error notification about the body being specified m
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 092 - Should error when the body is specified twice - directly as " +
                     "a body and then as a fault", ((string[])(null)));
-#line 40
-this.ScenarioSetup(scenarioInfo);
-#line 41
-testRunner.When("the body is specified twice - directly as a body entry and then as a fault", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 42
+this.ScenarioSetup(scenarioInfo);
+#line 43
+testRunner.When("the body is specified twice - directly as a body entry and then as a fault", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 44
 testRunner.Then("there is an error notification about the body being specified more than once", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -251,11 +251,11 @@ testRunner.Then("there is an error notification about the body being specified m
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 101 - Should make a SOAP body from an XML Object - with no XML att" +
                     "ribute", ((string[])(null)));
-#line 45
+#line 49
 this.ScenarioSetup(scenarioInfo);
-#line 46
+#line 50
 testRunner.When("a SOAP envelope with a body entry from an object with no XML attribute is built", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 47
+#line 51
 testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -269,12 +269,12 @@ testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.Spe
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 102 - Should make a SOAP body from an XML Object - with an XML Roo" +
                     "t attribute", ((string[])(null)));
-#line 49
+#line 53
 this.ScenarioSetup(scenarioInfo);
-#line 50
+#line 54
 testRunner.When("a SOAP envelope with a body entry from an object with an XML Root attribute is bu" +
                     "ilt", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 51
+#line 55
 testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -288,12 +288,12 @@ testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.Spe
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 103 - Should make a SOAP body from an XML Object - with an XML Typ" +
                     "e attribute", ((string[])(null)));
-#line 53
+#line 57
 this.ScenarioSetup(scenarioInfo);
-#line 54
+#line 58
 testRunner.When("a SOAP envelope with a body entry from an object with an XML Type attribute is bu" +
                     "ilt", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 55
+#line 59
 testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -309,12 +309,12 @@ testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.Spe
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 104 - Should make a SOAP body from an XML Object - with an XML Roo" +
                     "t attribute - using the given XML element name and existing root attribute names" +
                     "pace", ((string[])(null)));
-#line 57
+#line 61
 this.ScenarioSetup(scenarioInfo);
-#line 58
+#line 62
 testRunner.When("a SOAP envelope with a body entry from an object with an XML Root attribute is bu" +
                     "ilt - with a given XML element name and blank namespace", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 59
+#line 63
 testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -328,12 +328,141 @@ testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.Spe
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 105 - Should make a SOAP body from an XML Object - with an XML Roo" +
                     "t attribute - using the given XML element name and given element namespace", ((string[])(null)));
-#line 61
+#line 65
 this.ScenarioSetup(scenarioInfo);
-#line 62
+#line 66
 testRunner.When("a SOAP envelope with a body entry from an object with an XML Root attribute is bu" +
                     "ilt - with a given XML element name and namespace", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 63
+#line 67
+testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("MakingSoap11 - 201 - Should make a SOAP header from an XML Object - with no XML a" +
+            "ttribute")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MakingSoap11")]
+        public virtual void MakingSoap11_201_ShouldMakeASOAPHeaderFromAnXMLObject_WithNoXMLAttribute()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 201 - Should make a SOAP header from an XML Object - with no XML a" +
+                    "ttribute", ((string[])(null)));
+#line 72
+this.ScenarioSetup(scenarioInfo);
+#line 73
+testRunner.When("a SOAP envelope with a header block from an object with no XML attribute is built" +
+                    "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 74
+testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("MakingSoap11 - 202 - Should make a SOAP header from an XML Object - with an XML R" +
+            "oot attribute")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MakingSoap11")]
+        public virtual void MakingSoap11_202_ShouldMakeASOAPHeaderFromAnXMLObject_WithAnXMLRootAttribute()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 202 - Should make a SOAP header from an XML Object - with an XML R" +
+                    "oot attribute", ((string[])(null)));
+#line 76
+this.ScenarioSetup(scenarioInfo);
+#line 77
+testRunner.When("a SOAP envelope with a header block from an object with an XML Root attribute is " +
+                    "built", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 78
+testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("MakingSoap11 - 203 - Should make a SOAP header from an XML Object - with an XML T" +
+            "ype attribute")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MakingSoap11")]
+        public virtual void MakingSoap11_203_ShouldMakeASOAPHeaderFromAnXMLObject_WithAnXMLTypeAttribute()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 203 - Should make a SOAP header from an XML Object - with an XML T" +
+                    "ype attribute", ((string[])(null)));
+#line 80
+this.ScenarioSetup(scenarioInfo);
+#line 81
+testRunner.When("a SOAP envelope with a header block from an object with an XML Type attribute is " +
+                    "built", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 82
+testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("MakingSoap11 - 204 - Should make a SOAP header from an XML Object - with an XML R" +
+            "oot attribute - using the given XML element name and existing root attribute nam" +
+            "espace")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MakingSoap11")]
+        public virtual void MakingSoap11_204_ShouldMakeASOAPHeaderFromAnXMLObject_WithAnXMLRootAttribute_UsingTheGivenXMLElementNameAndExistingRootAttributeNamespace()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 204 - Should make a SOAP header from an XML Object - with an XML R" +
+                    "oot attribute - using the given XML element name and existing root attribute nam" +
+                    "espace", ((string[])(null)));
+#line 84
+this.ScenarioSetup(scenarioInfo);
+#line 85
+testRunner.When("a SOAP envelope with a header block from an object with an XML Root attribute is " +
+                    "built - with a given XML element name and blank namespace", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 86
+testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("MakingSoap11 - 205 - Should make a SOAP header from an XML Object - with an XML R" +
+            "oot attribute - using the given XML element name and given element namespace")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MakingSoap11")]
+        public virtual void MakingSoap11_205_ShouldMakeASOAPHeaderFromAnXMLObject_WithAnXMLRootAttribute_UsingTheGivenXMLElementNameAndGivenElementNamespace()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 205 - Should make a SOAP header from an XML Object - with an XML R" +
+                    "oot attribute - using the given XML element name and given element namespace", ((string[])(null)));
+#line 88
+this.ScenarioSetup(scenarioInfo);
+#line 89
+testRunner.When("a SOAP envelope with a header block from an object with an XML Root attribute is " +
+                    "built - with a given XML element name and namespace", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 90
+testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("MakingSoap11 - 206 - Should make a SOAP header from an XML string")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MakingSoap11")]
+        public virtual void MakingSoap11_206_ShouldMakeASOAPHeaderFromAnXMLString()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 206 - Should make a SOAP header from an XML string", ((string[])(null)));
+#line 92
+this.ScenarioSetup(scenarioInfo);
+#line 93
+testRunner.When("a SOAP envelope with a header block from an XML string is built", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 94
+testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("MakingSoap11 - 207 - Should make a SOAP header from an XContainer")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "MakingSoap11")]
+        public virtual void MakingSoap11_207_ShouldMakeASOAPHeaderFromAnXContainer()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("MakingSoap11 - 207 - Should make a SOAP header from an XContainer", ((string[])(null)));
+#line 96
+this.ScenarioSetup(scenarioInfo);
+#line 97
+testRunner.When("a SOAP envelope with a header block from an XContainer is built", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 98
 testRunner.Then("the SOAP envelope is correct", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

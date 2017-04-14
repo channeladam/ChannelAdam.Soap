@@ -2,8 +2,8 @@
 <package>
   <metadata>
     <id>ChannelAdam.Soap</id>
-    <version>1.0.3</version>
-    <title>ChannelAdam SOAP Library (Portable)</title>
+    <version>1.1.0</version>
+    <title>ChannelAdam SOAP Library (Portable and Not)</title>
     <authors>Adam Craven</authors>
     <owners>Adam Craven</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A fluent API for easily building SOAP 1.1 and SOAP 1.2 messages.</description>
     <releaseNotes>
+1.1.0 - Added overloads to ISoap1?Header.AddBlock() similar to ISoap1?Body.AddEntry()
 1.0.3 - Added build of a non-portable .NET 4.0 target. Portable requires .NET 4.0.3 as a minimum.
 1.0.2 - Fixed usage of multiple dispose pattern.
 1.0.1 - Fixed namespace of SoapBuilder.

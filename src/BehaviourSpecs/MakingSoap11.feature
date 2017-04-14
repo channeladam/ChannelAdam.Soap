@@ -29,6 +29,8 @@ When a SOAP envelope with a customised soap encoding is built
 Then the SOAP envelope is correct
 
 
+# Usage Rules
+
 Scenario: MakingSoap11 - 090 - Should error when the body is specified as a fault more than once
 When the body is specified twice as a fault
 Then there is an error notification about the body being specified more than once
@@ -41,6 +43,8 @@ Scenario: MakingSoap11 - 092 - Should error when the body is specified twice - d
 When the body is specified twice - directly as a body entry and then as a fault
 Then there is an error notification about the body being specified more than once
 
+
+# Body
 
 Scenario: MakingSoap11 - 101 - Should make a SOAP body from an XML Object - with no XML attribute
 When a SOAP envelope with a body entry from an object with no XML attribute is built
@@ -61,3 +65,36 @@ Then the SOAP envelope is correct
 Scenario: MakingSoap11 - 105 - Should make a SOAP body from an XML Object - with an XML Root attribute - using the given XML element name and given element namespace
 When a SOAP envelope with a body entry from an object with an XML Root attribute is built - with a given XML element name and namespace
 Then the SOAP envelope is correct
+
+
+# Header
+
+Scenario: MakingSoap11 - 201 - Should make a SOAP header from an XML Object - with no XML attribute
+When a SOAP envelope with a header block from an object with no XML attribute is built
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 202 - Should make a SOAP header from an XML Object - with an XML Root attribute
+When a SOAP envelope with a header block from an object with an XML Root attribute is built
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 203 - Should make a SOAP header from an XML Object - with an XML Type attribute
+When a SOAP envelope with a header block from an object with an XML Type attribute is built
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 204 - Should make a SOAP header from an XML Object - with an XML Root attribute - using the given XML element name and existing root attribute namespace
+When a SOAP envelope with a header block from an object with an XML Root attribute is built - with a given XML element name and blank namespace
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 205 - Should make a SOAP header from an XML Object - with an XML Root attribute - using the given XML element name and given element namespace
+When a SOAP envelope with a header block from an object with an XML Root attribute is built - with a given XML element name and namespace
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 206 - Should make a SOAP header from an XML string
+When a SOAP envelope with a header block from an XML string is built
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 207 - Should make a SOAP header from an XContainer
+When a SOAP envelope with a header block from an XContainer is built
+Then the SOAP envelope is correct
+
+

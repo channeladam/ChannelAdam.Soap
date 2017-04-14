@@ -372,6 +372,194 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
+        #region Header
+
+        [When(@"a SOAP envelope with a header block from an object with no XML attribute is built")]
+        public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithNoXMLAttributeIsBuilt()
+        {
+            var obj = new XmlObjectWithNoAttribute
+            {
+                MyProperty = 2
+            };
+
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .WithHeader.AddBlock(obj)
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            var expectedXml =
+@"<env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope"">
+  <env:Header>
+    <XmlObjectWithNoAttribute>
+        <MyProperty>2</MyProperty>
+    </XmlObjectWithNoAttribute>
+  </env:Header>
+</env:Envelope>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When(@"a SOAP envelope with a header block from an object with an XML Root attribute is built")]
+        public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithAnXMLRootAttributeIsBuilt()
+        {
+            var obj = new XmlObjectWithRootAttribute
+            {
+                MyProperty = 2
+            };
+
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .WithHeader.AddBlock(obj)
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            var expectedXml =
+@"<env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope"">
+  <env:Header>
+    <XmlObjectWithRootAttribute xmlns=""http://root.attribute"">
+        <MyProperty>2</MyProperty>
+    </XmlObjectWithRootAttribute>
+  </env:Header>
+</env:Envelope>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When(@"a SOAP envelope with a header block from an object with an XML Type attribute is built")]
+        public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithAnXMLTypeAttributeIsBuilt()
+        {
+            var obj = new XmlObjectWithTypeAttribute
+            {
+                MyProperty = 2
+            };
+
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .WithHeader.AddBlock(obj)
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            var expectedXml =
+@"<env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope"">
+  <env:Header>
+    <XmlObjectWithTypeAttribute xmlns=""http://type.attribute"">
+        <MyProperty>2</MyProperty>
+    </XmlObjectWithTypeAttribute>
+  </env:Header>
+</env:Envelope>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When(@"a SOAP envelope with a header block from an object with an XML Root attribute is built - with a given XML element name and blank namespace")]
+        public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithAnXMLRootAttributeIsBuilt_WithAGivenXMLElementNameAndBlankNamespace()
+        {
+            var obj = new XmlObjectWithRootAttribute
+            {
+                MyProperty = 2
+            };
+
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .WithHeader.AddBlock(obj, "NewElementName", null)
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            var expectedXml =
+@"<env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope"">
+  <env:Header>
+    <NewElementName xmlns=""http://root.attribute"">
+        <MyProperty>2</MyProperty>
+    </NewElementName>
+  </env:Header>
+</env:Envelope>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When(@"a SOAP envelope with a header block from an object with an XML Root attribute is built - with a given XML element name and namespace")]
+        public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithAnXMLRootAttributeIsBuilt_WithAGivenXMLElementNameAndNamespace()
+        {
+            var obj = new XmlObjectWithRootAttribute
+            {
+                MyProperty = 2
+            };
+
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .WithHeader.AddBlock(obj, "NewElementName", "http://new.root.namespace")
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            var expectedXml =
+@"<env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope"">
+  <env:Header>
+    <NewElementName xmlns=""http://new.root.namespace"">
+        <MyProperty>2</MyProperty>
+    </NewElementName>
+  </env:Header>
+</env:Envelope>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When(@"a SOAP envelope with a header block from an XML string is built")]
+        public void WhenASOAPEnvelopeWithAHeaderBlockFromAnXMLStringIsBuilt()
+        {
+            var obj = new XmlObjectWithRootAttribute
+            {
+                MyProperty = 2
+            };
+
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .WithHeader.AddBlock(ObjectXmlSerialiser.SerialiseObject(obj, null, null))
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            var expectedXml =
+@"<env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope"">
+  <env:Header>
+    <XmlObjectWithRootAttribute xmlns=""http://root.attribute"">
+        <MyProperty>2</MyProperty>
+    </XmlObjectWithRootAttribute>
+  </env:Header>
+</env:Envelope>";
+
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When(@"a SOAP envelope with a header block from an XContainer is built")]
+        public void WhenASOAPEnvelopeWithAHeaderBlockFromAnXContainerIsBuilt()
+        {
+            var obj = new XmlObjectWithRootAttribute
+            {
+                MyProperty = 2
+            };
+
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .WithHeader.AddBlock(XElement.Parse(ObjectXmlSerialiser.SerialiseObject(obj, null, null)))
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            var expectedXml =
+@"<env:Envelope xmlns:env=""http://www.w3.org/2003/05/soap-envelope"">
+  <env:Header>
+    <XmlObjectWithRootAttribute xmlns=""http://root.attribute"">
+        <MyProperty>2</MyProperty>
+    </XmlObjectWithRootAttribute>
+  </env:Header>
+</env:Envelope>";
+
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        #endregion
+
         #endregion
 
         #region Then
