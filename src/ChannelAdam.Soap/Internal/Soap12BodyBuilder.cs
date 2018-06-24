@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap12BodyBuilder.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2018 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ namespace ChannelAdam.Soap.Internal
         #region Private Fields
 
         private XElement bodyElement;
-        private ISoap12EnvelopeBuilder envelopeBuilder;
+        private readonly ISoap12EnvelopeBuilder envelopeBuilder;
 
         #endregion Private Fields
 
@@ -48,12 +48,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                if (this.bodyElement == null)
-                {
-                    this.bodyElement = Soap12Maker.CreateSoapBody();
-                }
-
-                return this.bodyElement;
+                return this.bodyElement ?? (this.bodyElement = Soap12Maker.CreateSoapBody());
             }
         }
 

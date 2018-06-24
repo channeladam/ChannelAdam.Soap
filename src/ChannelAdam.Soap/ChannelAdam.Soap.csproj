@@ -1,97 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4200EEAB-0EC5-4E05-9ECB-2E83CCC77590}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChannelAdam.Soap</RootNamespace>
-    <AssemblyName>ChannelAdam.Soap</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile336</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>A .NET Standard 2.0 library that provides a fluent API for building SOAP 1.1 and SOAP 1.2 messages.</Description>
+    <Version>0.0.0</Version>
+    <Authors>Adam Craven</Authors>
+    <Copyright>Copyright 2016-2018 Adam Craven</Copyright>
+    <PackageTags>SOAP 1.1, SOAP 1.2, fluent, maker, builder</PackageTags>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/channeladam/ChannelAdam.Soap</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/channeladam/ChannelAdam.Soap</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIconUrl>https://devzone.channeladam.com/img/channeladam/channeladam-logo.png</PackageIconUrl>
+    <PackageReleaseNotes>2.0.0 - Target .NET Standard 2.0, no strong name signing. Removed 4.0 and PCL targets.
+1.1.0 - Added overloads to ISoap1?Header.AddBlock() similar to ISoap1?Body.AddEntry()
+1.0.3 - Added build of a non-portable .NET 4.0 target. Portable requires .NET 4.0.3 as a minimum.
+1.0.2 - Fixed usage of multiple dispose pattern.
+1.0.1 - Fixed namespace of SoapBuilder.
+1.0.0 - Initial release.</PackageReleaseNotes>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>..\ChannelAdamCodeAnalysis.ruleset</CodeAnalysisRuleSet>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>ChannelAdam.Soap.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="ChannelAdam.Soap.nuspec" />
-    <None Include="ChannelAdam.Soap.snk" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Abstractions\ISoap12BodyBuilder.cs" />
-    <Compile Include="Abstractions\ISoap11BodyBuilder.cs" />
-    <Compile Include="Abstractions\ISoap11EnvelopeBuilder.cs" />
-    <Compile Include="Abstractions\ISoap12HeaderBuilder.cs" />
-    <Compile Include="Abstractions\ISoap11HeaderBuilder.cs" />
-    <Compile Include="Abstractions\ISoap12EnvelopeBuilder.cs" />
-    <Compile Include="Internal\Soap12BodyBuilder.cs" />
-    <Compile Include="Internal\Soap12HeaderBuilder.cs" />
-    <Compile Include="NamespaceConstants.cs" />
-    <Compile Include="NamespacePrefixConstants.cs" />
-    <Compile Include="Soap11Constants.cs" />
-    <Compile Include="Soap12Constants.cs" />
-    <Compile Include="ObjectXmlSerialiser.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Internal\Soap11BodyBuilder.cs" />
-    <Compile Include="Internal\Soap11EnvelopeBuilder.cs" />
-    <Compile Include="Soap11FaultCode.cs" />
-    <Compile Include="Internal\Soap11HeaderBuilder.cs" />
-    <Compile Include="Soap11Maker.cs" />
-    <Compile Include="Internal\Soap12EnvelopeBuilder.cs" />
-    <Compile Include="Soap12FaultCode.cs" />
-    <Compile Include="Soap12Maker.cs" />
-    <Compile Include="SoapBuilder.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <CodeAnalysisDictionary Include="..\CustomDictionary.xml">
-      <Link>CustomDictionary.xml</Link>
-    </CodeAnalysisDictionary>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

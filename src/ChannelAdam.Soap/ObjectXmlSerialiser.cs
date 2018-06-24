@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="ObjectXmlSerialiser.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2018 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,8 +40,6 @@ namespace ChannelAdam.Soap
 
         public static string SerialiseObject(object toSerialise, string toElementName, string toElementNamespace, XmlWriterSettings xmlWriterSettings)
         {
-            string result = null;
-
             if (toSerialise == null)
             {
                 throw new ArgumentNullException(nameof(toSerialise));
@@ -59,9 +57,7 @@ namespace ChannelAdam.Soap
                 serialiser.Serialize(xmlWriter, toSerialise);
             }
 
-            result = sb.ToString();
-
-            return result;
+            return sb.ToString();
         }
 
         #endregion Public Methods
@@ -71,8 +67,10 @@ namespace ChannelAdam.Soap
         private static XmlAttributeOverrides CreateXmlAttributeOverrides(Type objectType, XmlRootAttribute newRootAttribute)
         {
             var xmlAttributeOverrides = new XmlAttributeOverrides();
-            var xmlAttributes = new XmlAttributes();
-            xmlAttributes.XmlRoot = newRootAttribute;
+            var xmlAttributes = new XmlAttributes
+            {
+                XmlRoot = newRootAttribute
+            };
             xmlAttributeOverrides.Add(objectType, xmlAttributes);
 
             return xmlAttributeOverrides;
@@ -99,7 +97,7 @@ namespace ChannelAdam.Soap
             var customAtts = objectType.GetCustomAttributes(false);
 
             var rootAtts = customAtts.OfType<XmlRootAttribute>();
-            if (rootAtts.Count() > 0)
+            if (rootAtts.Any())
             {
                 var att = (XmlRootAttribute)rootAtts.First();
                 result = att.Namespace;
@@ -107,7 +105,7 @@ namespace ChannelAdam.Soap
             else
             {
                 var xmlTypeAtts = customAtts.OfType<XmlTypeAttribute>();
-                if (xmlTypeAtts.Count() > 0)
+                if (xmlTypeAtts.Any())
                 {
                     var att = (XmlTypeAttribute)xmlTypeAtts.First();
                     result = att.Namespace;

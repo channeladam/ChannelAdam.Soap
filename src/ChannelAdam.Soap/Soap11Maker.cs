@@ -104,7 +104,7 @@ namespace ChannelAdam.Soap
                 fault.Add(new XElement(XNamespace.None + "faultactor", faultActor));
             }
 
-            if (detailEntries != null && detailEntries.Any())
+            if (detailEntries?.Any() == true)
             {
                 var detail = new XElement(XNamespace.None + "detail", null);
                 fault.Add(detail);

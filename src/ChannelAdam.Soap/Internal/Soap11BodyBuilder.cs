@@ -29,7 +29,7 @@ namespace ChannelAdam.Soap.Internal
         #region Private Fields
 
         private XElement bodyElement;
-        private ISoap11EnvelopeBuilder envelopeBuilder;
+        private readonly ISoap11EnvelopeBuilder envelopeBuilder;
 
         #endregion Private Fields
 
@@ -48,12 +48,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                if (this.bodyElement == null)
-                {
-                    this.bodyElement = Soap11Maker.CreateSoapBody();
-                }
-
-                return this.bodyElement;
+                return this.bodyElement ?? (this.bodyElement = Soap11Maker.CreateSoapBody());
             }
         }
 

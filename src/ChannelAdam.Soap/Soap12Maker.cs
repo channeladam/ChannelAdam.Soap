@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap12Maker.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2018 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -178,8 +178,10 @@ namespace ChannelAdam.Soap
         {
             var fault = new XElement(Soap12Constants.SoapEnvelopeNamespace + "Fault");
 
-            var codeElements = new List<XElement>();
-            codeElements.Add(new XElement(Soap12Constants.SoapEnvelopeNamespace + "Value", $"{NamespacePrefixConstants.SoapEnvelope}:{code.ToString()}"));
+            var codeElements = new List<XElement>
+            {
+                new XElement(Soap12Constants.SoapEnvelopeNamespace + "Value", $"{NamespacePrefixConstants.SoapEnvelope}:{code.ToString()}")
+            };
 
             if (!string.IsNullOrWhiteSpace(subCode))
             {
@@ -218,7 +220,7 @@ namespace ChannelAdam.Soap
                 fault.Add(new XElement(Soap12Constants.SoapEnvelopeNamespace + "Role", role));
             }
 
-            if (detailEntries != null && detailEntries.Any())
+            if (detailEntries?.Any() == true)
             {
                 var detail = new XElement(Soap12Constants.SoapEnvelopeNamespace + "Detail", null);
                 fault.Add(detail);

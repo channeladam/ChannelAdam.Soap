@@ -44,12 +44,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                if (this.bodyBuilder == null)
-                {
-                    this.bodyBuilder = new Soap12BodyBuilder(this);
-                }
-
-                return this.bodyBuilder;
+                return this.bodyBuilder ?? (this.bodyBuilder = new Soap12BodyBuilder(this));
             }
         }
 
@@ -57,12 +52,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                if (this.headerBuilder == null)
-                {
-                    this.headerBuilder = new Soap12HeaderBuilder(this);
-                }
-
-                return this.headerBuilder;
+                return this.headerBuilder ?? (this.headerBuilder = new Soap12HeaderBuilder(this));
             }
         }
 

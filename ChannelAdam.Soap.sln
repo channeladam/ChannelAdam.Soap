@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BehaviourSpecs", "src\BehaviourSpecs\BehaviourSpecs.csproj", "{05C03668-BC59-40E5-875B-245705A99B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChannelAdam.Soap", "src\ChannelAdam.Soap\ChannelAdam.Soap.csproj", "{C5EB7C3B-9B1F-410A-9FC9-54E7BE259898}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{499C2A42-9E1F-4F6B-A245-989B516A6BE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AC76D5B9-AB8D-46AF-9C0D-16526D0D4E6F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		GitVersion.yml = GitVersion.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05C03668-BC59-40E5-875B-245705A99B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C03668-BC59-40E5-875B-245705A99B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C03668-BC59-40E5-875B-245705A99B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C03668-BC59-40E5-875B-245705A99B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5EB7C3B-9B1F-410A-9FC9-54E7BE259898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5EB7C3B-9B1F-410A-9FC9-54E7BE259898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5EB7C3B-9B1F-410A-9FC9-54E7BE259898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5EB7C3B-9B1F-410A-9FC9-54E7BE259898}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{05C03668-BC59-40E5-875B-245705A99B20} = {499C2A42-9E1F-4F6B-A245-989B516A6BE1}
+		{C5EB7C3B-9B1F-410A-9FC9-54E7BE259898} = {499C2A42-9E1F-4F6B-A245-989B516A6BE1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94418369-80A9-4009-B654-482A24638450}
+	EndGlobalSection
+EndGlobal

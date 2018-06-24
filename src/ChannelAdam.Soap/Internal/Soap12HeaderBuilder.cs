@@ -47,12 +47,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                if (this.headerElement == null)
-                {
-                    this.headerElement = Soap12Maker.CreateSoapHeader();
-                }
-
-                return this.headerElement;
+                return this.headerElement ?? (this.headerElement = Soap12Maker.CreateSoapHeader());
             }
         }
 

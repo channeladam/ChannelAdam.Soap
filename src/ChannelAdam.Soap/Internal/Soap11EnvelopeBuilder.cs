@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap11EnvelopeBuilder.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2018 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,12 +44,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                if (this.bodyBuilder == null)
-                {
-                    this.bodyBuilder = new Soap11BodyBuilder(this);
-                }
-
-                return this.bodyBuilder;
+                return this.bodyBuilder ?? (this.bodyBuilder = new Soap11BodyBuilder(this));
             }
         }
 
@@ -57,12 +52,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                if (this.headerBuilder == null)
-                {
-                    this.headerBuilder = new Soap11HeaderBuilder(this);
-                }
-
-                return this.headerBuilder;
+                return this.headerBuilder ?? (this.headerBuilder = new Soap11HeaderBuilder(this));
             }
         }
 

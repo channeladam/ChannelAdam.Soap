@@ -2,8 +2,7 @@
 
 using BehaviourSpecs.TestData;
 using ChannelAdam.Soap;
-using ChannelAdam.Soap.Abstractions;
-using ChannelAdam.TestFramework.MSTest;
+using ChannelAdam.TestFramework.MSTestV2.Abstractions;
 using ChannelAdam.TestFramework.Xml;
 using TechTalk.SpecFlow;
 
@@ -46,7 +45,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <wsa:Action xmlns:wsa=""http://www.w3.org/2005/08/addressing"">myActionOhYeah!</wsa:Action>
@@ -65,7 +64,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body>
     <a>hello from the body</a>
@@ -85,7 +84,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <wsa:Action xmlns:wsa=""http://www.w3.org/2005/08/addressing"">myActionOhYeah!</wsa:Action>
@@ -107,7 +106,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body>
     <env:Fault>
@@ -135,7 +134,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body env:soapEncoding=""http://schemas.xmlsoap.org/soap/encoding/"">
     <a>hello</a>
@@ -155,7 +154,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body env:soapEncoding=""custom soap encoding namespace!!"">
     <a>hello</a>
@@ -175,7 +174,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body>
     <a>body entry 1</a>
@@ -245,7 +244,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body>
     <XmlObjectWithNoAttribute>
@@ -271,7 +270,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body>
     <XmlObjectWithRootAttribute xmlns=""http://root.attribute"">
@@ -297,7 +296,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body>
     <XmlObjectWithTypeAttribute xmlns=""http://type.attribute"">
@@ -323,7 +322,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body>
     <NewElementName xmlns=""http://root.attribute"">
@@ -349,7 +348,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Body>
     <NewElementName xmlns=""http://new.root.namespace"">
@@ -377,7 +376,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <XmlObjectWithNoAttribute>
@@ -403,7 +402,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <XmlObjectWithRootAttribute xmlns=""http://root.attribute"">
@@ -429,7 +428,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <XmlObjectWithTypeAttribute xmlns=""http://type.attribute"">
@@ -455,7 +454,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <NewElementName xmlns=""http://root.attribute"">
@@ -481,7 +480,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <NewElementName xmlns=""http://new.root.namespace"">
@@ -507,7 +506,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <XmlObjectWithRootAttribute xmlns=""http://root.attribute"">
@@ -534,7 +533,7 @@ namespace BehaviourSpecs
 
             this.xmlTester.ArrangeActualXml(this.soapEnvelope);
 
-            var expectedXml =
+            const string expectedXml =
 @"<env:Envelope xmlns:env=""http://schemas.xmlsoap.org/soap/envelope/"">
   <env:Header>
     <XmlObjectWithRootAttribute xmlns=""http://root.attribute"">
