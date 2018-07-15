@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/channeladam/ChannelAdam.Soap</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIconUrl>https://devzone.channeladam.com/img/channeladam/channeladam-logo.png</PackageIconUrl>
-    <PackageReleaseNotes>2.0.1 - Fixed memory leak with usage of leaky XmlSerializer constructor - thank you ejohnsonTKTNET
+    <PackageReleaseNotes>2.0.3 - Fixed memory leak with usage of leaky XmlSerializer constructor - thank you ejohnsonTKTNET
 2.0.0 - Target .NET Standard 2.0, no strong name signing. Removed 4.0 and PCL targets.
 1.1.0 - Added overloads to ISoap1?Header.AddBlock() similar to ISoap1?Body.AddEntry()
 1.0.3 - Added build of a non-portable .NET 4.0 target. Portable requires .NET 4.0.3 as a minimum.
