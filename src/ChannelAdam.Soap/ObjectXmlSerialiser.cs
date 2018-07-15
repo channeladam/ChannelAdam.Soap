@@ -26,7 +26,11 @@ namespace ChannelAdam.Soap
 
     public static class ObjectXmlSerialiser
     {
+        #region Private Fields
+
         private static readonly ConcurrentDictionary<Tuple<Type, string, string>, XmlSerializer> SerialiserCache = new ConcurrentDictionary<Tuple<Type, string, string>, XmlSerializer>();
+
+        #endregion Private Fields
 
         #region Public Methods
 
@@ -50,27 +54,7 @@ namespace ChannelAdam.Soap
 
             var objectType = toSerialise.GetType();
 
-            /*
-            The XmlSerializer(Type, XmlAttributeOverrides) ctor leaks memory, so cache it per unique input values: https://msdn.microsoft.com/en-us/library/system.xml.serialization.xmlserializer.aspx
-               
-            "To increase performance, the XML serialization infrastructure dynamically generates assemblies to serialize and deserialize specified types. The infrastructure finds and reuses those assemblies. This behavior occurs only when using the following constructors:
-            
-            XmlSerializer.XmlSerializer(Type)
-
-            XmlSerializer.XmlSerializer(Type, String)
-
-            If you use any of the other constructors, multiple versions of the same assembly are generated and never unloaded, which results in a memory leak and poor performance. The easiest solution is to use one of the previously mentioned two constructors. Otherwise, you must cache the assemblies..."
-            */
-            var key = Tuple.Create(objectType, toElementName, toElementNamespace);
-            var serialiser = 
-                SerialiserCache.GetOrAdd(
-                    key, 
-                    k =>
-                    {
-                        var newRootAttribute = CreateXmlRootAttribute(objectType, toElementName, toElementNamespace);
-                        XmlAttributeOverrides xmlAttributeOverrides = CreateXmlAttributeOverrides(objectType, newRootAttribute);
-                        return new XmlSerializer(objectType, xmlAttributeOverrides);
-                    });
+            XmlSerializer serialiser = GetOrAddXmlSerialiserFromCache(objectType, toElementName, toElementNamespace);
 
             var sb = new StringBuilder();
             using (var xmlWriter = XmlWriter.Create(sb, xmlWriterSettings))
@@ -84,6 +68,29 @@ namespace ChannelAdam.Soap
         #endregion Public Methods
 
         #region Private Methods
+
+        private static XmlSerializer GetOrAddXmlSerialiserFromCache(Type objectType, string toElementName, string toElementNamespace)
+        {
+            /*
+             * The XmlSerializer(Type, XmlAttributeOverrides) ctor leaks memory, so cache it per unique input values: 
+             *      https://msdn.microsoft.com/en-us/library/system.xml.serialization.xmlserializer.aspx
+             *     "To increase performance, the XML serialization infrastructure dynamically generates assemblies to serialize and deserialize specified types. 
+             *      The infrastructure finds and reuses those assemblies. This behavior occurs only when using the following constructors:
+             *          XmlSerializer.XmlSerializer(Type)
+             *          XmlSerializer.XmlSerializer(Type, String)
+             *      If you use any of the other constructors, multiple versions of the same assembly are generated and never unloaded, 
+             *      which results in a memory leak and poor performance. The easiest solution is to use one of the previously mentioned two constructors. 
+             *      Otherwise, you must cache the assemblies..."
+            */
+            return SerialiserCache.GetOrAdd(
+                Tuple.Create(objectType, toElementName, toElementNamespace),
+                _ =>
+                {
+                    var newRootAttribute = CreateXmlRootAttribute(objectType, toElementName, toElementNamespace);
+                    XmlAttributeOverrides xmlAttributeOverrides = CreateXmlAttributeOverrides(objectType, newRootAttribute);
+                    return new XmlSerializer(objectType, xmlAttributeOverrides);
+                });
+        }
 
         private static XmlAttributeOverrides CreateXmlAttributeOverrides(Type objectType, XmlRootAttribute newRootAttribute)
         {
@@ -135,6 +142,7 @@ namespace ChannelAdam.Soap
 
             return result;
         }
+
         #endregion Private Methods
     }
 }
