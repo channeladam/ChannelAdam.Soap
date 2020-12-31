@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap12BodyBuilder.cs">
-//     Copyright (c) 2016-2018 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ namespace ChannelAdam.Soap.Internal
     {
         #region Private Fields
 
-        private XElement bodyElement;
+        private XElement? bodyElement;
         private readonly ISoap12EnvelopeBuilder envelopeBuilder;
 
         #endregion Private Fields
@@ -48,7 +48,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                return this.bodyElement ?? (this.bodyElement = Soap12Maker.CreateSoapBody());
+                return this.bodyElement ??= Soap12Maker.CreateSoapBody();
             }
         }
 
@@ -76,7 +76,7 @@ namespace ChannelAdam.Soap.Internal
 
         public ISoap12EnvelopeBuilder AddEntry(object toSerialise)
         {
-            return this.AddEntry(ObjectXmlSerialiser.SerialiseObject(toSerialise, null, null));
+            return this.AddEntry(ObjectXmlSerialiser.SerialiseObject(toSerialise, string.Empty, string.Empty));
         }
 
         public ISoap12EnvelopeBuilder AddEntry(object toSerialise, string toElementName, string toElementNamespace)
@@ -84,7 +84,7 @@ namespace ChannelAdam.Soap.Internal
             return this.AddEntry(ObjectXmlSerialiser.SerialiseObject(toSerialise, toElementName, toElementNamespace));
         }
 
-        public XContainer Build()
+        public XContainer? Build()
         {
             return this.bodyElement;
         }
@@ -109,7 +109,7 @@ namespace ChannelAdam.Soap.Internal
             return this.envelopeBuilder;
         }
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string subCode, string reason)
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string? subCode, string reason)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -117,7 +117,7 @@ namespace ChannelAdam.Soap.Internal
             return this.envelopeBuilder;
         }
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason)
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -125,7 +125,7 @@ namespace ChannelAdam.Soap.Internal
             return this.envelopeBuilder;
         }
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, IEnumerable<XContainer> detailEntries)
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -142,7 +142,7 @@ namespace ChannelAdam.Soap.Internal
         /// <param name="reason">The reason for the fault.</param>
         /// <param name="reasonXmlLanguage">The xml:lang language for the text in the fault.</param>
         /// <returns>The SOAP 1.2 Envelope Builder.</returns>
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage)
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -150,7 +150,7 @@ namespace ChannelAdam.Soap.Internal
             return this.envelopeBuilder;
         }
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer> detailEntries)
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -158,7 +158,7 @@ namespace ChannelAdam.Soap.Internal
             return this.envelopeBuilder;
         }
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage, string node)
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -166,7 +166,7 @@ namespace ChannelAdam.Soap.Internal
             return this.envelopeBuilder;
         }
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage, string node, string role)
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -174,7 +174,7 @@ namespace ChannelAdam.Soap.Internal
             return this.envelopeBuilder;
         }
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage, string node, string role, IEnumerable<XContainer> detailEntries)
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -209,7 +209,7 @@ namespace ChannelAdam.Soap.Internal
         {
             if (this.bodyElement?.HasElements == true)
             {
-                throw new InvalidOperationException($"Cannot set a fault because the body already has an entry - either by previously adding an entry or by setting a fault.");
+                throw new InvalidOperationException("Cannot set a fault because the body already has an entry - either by previously adding an entry or by setting a fault.");
             }
         }
 

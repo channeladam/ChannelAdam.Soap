@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="ISoap12BodyBuilder.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,24 +33,26 @@ namespace ChannelAdam.Soap.Abstractions
 
         ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string reason);
 
-        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string subCode, string reason);
+        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string? subCode, string reason);
 
-        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason);
+        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason);
 
-        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage);
+        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage);
 
-        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage, string node);
+        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node);
 
-        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage, string node, string role);
+        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role);
 
-        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, IEnumerable<XContainer> detailEntries);
+        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries);
 
-        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer> detailEntries);
+        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries);
 
-        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace subCodeNamespace, string subCode, string reason, string reasonXmlLanguage, string node, string role, IEnumerable<XContainer> detailEntries);
+        ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries);
 
         ISoap12EnvelopeBuilder SetStandardSoapEncoding();
 
         ISoap12EnvelopeBuilder SetCustomSoapEncoding(string soapEncodingNamespace);
+
+        XContainer? Build();
     }
 }

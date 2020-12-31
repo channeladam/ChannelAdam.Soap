@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap11BodyBuilder.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ namespace ChannelAdam.Soap.Internal
     {
         #region Private Fields
 
-        private XElement bodyElement;
+        private XElement? bodyElement;
         private readonly ISoap11EnvelopeBuilder envelopeBuilder;
 
         #endregion Private Fields
@@ -48,7 +48,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                return this.bodyElement ?? (this.bodyElement = Soap11Maker.CreateSoapBody());
+                return this.bodyElement ??= Soap11Maker.CreateSoapBody();
             }
         }
 
@@ -76,7 +76,7 @@ namespace ChannelAdam.Soap.Internal
 
         public ISoap11EnvelopeBuilder AddEntry(object toSerialise)
         {
-            return this.AddEntry(ObjectXmlSerialiser.SerialiseObject(toSerialise, null, null));
+            return this.AddEntry(ObjectXmlSerialiser.SerialiseObject(toSerialise, string.Empty, string.Empty));
         }
 
         public ISoap11EnvelopeBuilder AddEntry(object toSerialise, string toElementName, string toElementNamespace)
@@ -84,7 +84,7 @@ namespace ChannelAdam.Soap.Internal
             return this.AddEntry(ObjectXmlSerialiser.SerialiseObject(toSerialise, toElementName, toElementNamespace));
         }
 
-        public XContainer Build()
+        public XContainer? Build()
         {
             return this.bodyElement;
         }
@@ -116,7 +116,7 @@ namespace ChannelAdam.Soap.Internal
         /// <param name="faultString">The fault string.</param>
         /// <param name="faultActor">The fault actor.</param>
         /// <returns>The SOAP 1.1 Envelope Builder.</returns>
-        public ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string faultActor)
+        public ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string? faultActor)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -132,7 +132,7 @@ namespace ChannelAdam.Soap.Internal
         /// <param name="faultActor">The fault actor.</param>
         /// <param name="detailEntries">A collection of fault detail XML entries.</param>
         /// <returns>The SOAP 1.1 Envelope Builder.</returns>
-        public ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string faultActor, IEnumerable<XContainer> detailEntries)
+        public ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string? faultActor, IEnumerable<XContainer>? detailEntries)
         {
             this.ValidateBodyForSettingAFault();
 
@@ -167,7 +167,7 @@ namespace ChannelAdam.Soap.Internal
         {
             if (this.bodyElement?.HasElements == true)
             {
-                throw new InvalidOperationException($"Cannot set a fault because the body already has an entry - either by previously adding an entry or by setting a fault.");
+                throw new InvalidOperationException("Cannot set a fault because the body already has an entry - either by previously adding an entry or by setting a fault.");
             }
         }
 

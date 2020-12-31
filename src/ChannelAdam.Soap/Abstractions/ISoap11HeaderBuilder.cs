@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="ISoap11HeaderBuilder.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,17 +22,19 @@ namespace ChannelAdam.Soap.Abstractions
     public interface ISoap11HeaderBuilder
     {
         ISoap11EnvelopeBuilder AddAction(string action);
-        
+
         ISoap11EnvelopeBuilder AddBlock(string headerBlockXml);
 
         ISoap11EnvelopeBuilder AddBlock(XContainer headerBlock);
-        
+
         ISoap11EnvelopeBuilder AddBlock(object toSerialise);
 
         ISoap11EnvelopeBuilder AddBlock(object toSerialise, string toElementName, string toElementNamespace);
-        
+
         ISoap11EnvelopeBuilder SetStandardSoapEncoding();
 
         ISoap11EnvelopeBuilder SetCustomSoapEncoding(string soapEncodingNamespace);
+
+        XContainer? Build();
     }
 }

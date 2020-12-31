@@ -1,8 +1,10 @@
-﻿using System.Xml.Linq;
+﻿#nullable disable
+
+using System.Xml.Linq;
 
 using BehaviourSpecs.TestData;
 using ChannelAdam.Soap;
-using ChannelAdam.TestFramework.MSTestV2.Abstractions;
+using ChannelAdam.TestFramework.NUnit.Abstractions;
 using ChannelAdam.TestFramework.Xml;
 using TechTalk.SpecFlow;
 
@@ -35,7 +37,7 @@ namespace BehaviourSpecs
 
         #region When
 
-        [When(@"a SOAP envelope with a header is built")]
+        [When("a SOAP envelope with a header is built")]
         public void WhenASOAPEnvelopeWithAHeaderIsBuilt()
         {
             this.soapEnvelope = SoapBuilder.CreateSoap11Envelope()
@@ -54,7 +56,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a body is built")]
+        [When("a SOAP envelope with a body is built")]
         public void WhenASOAPEnvelopeWithABodyIsBuilt()
         {
             this.soapEnvelope = SoapBuilder.CreateSoap11Envelope()
@@ -73,7 +75,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a header and body is built")]
+        [When("a SOAP envelope with a header and body is built")]
         public void WhenASOAPEnvelopeWithAHeaderAndBodyIsBuilt()
         {
             this.soapEnvelope = SoapBuilder.CreateSoap11Envelope()
@@ -96,7 +98,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a fault is built")]
+        [When("a SOAP envelope with a fault is built")]
         public void WhenASOAPEnvelopeWithAFaultIsBuilt()
         {
             this.soapEnvelope = SoapBuilder.CreateSoap11Envelope()
@@ -123,7 +125,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with the standard soap encoding is built")]
+        [When("a SOAP envelope with the standard soap encoding is built")]
         public void WhenASOAPEnvelopeWithTheStandardSoapEncodingIsBuilt()
         {
             this.soapEnvelope = SoapBuilder.CreateSoap11Envelope()
@@ -143,7 +145,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a customised soap encoding is built")]
+        [When("a SOAP envelope with a customised soap encoding is built")]
         public void WhenASOAPEnvelopeWithACustomisedSoapEncodingIsBuilt()
         {
             this.soapEnvelope = SoapBuilder.CreateSoap11Envelope()
@@ -163,7 +165,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"more than one non-fault body entry is added")]
+        [When("more than one non-fault body entry is added")]
         public void WhenTheBodyIsSpecifiedTwice()
         {
             this.soapEnvelope = SoapBuilder.CreateSoap11Envelope()
@@ -184,7 +186,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"the body is specified twice as a fault")]
+        [When("the body is specified twice as a fault")]
         public void WhenTheBodyIsSpecifiedTwiceAsAFault()
         {
             base.ExpectedException.MessageShouldContainText = "Cannot set a fault because the body already has an entry";
@@ -199,7 +201,7 @@ namespace BehaviourSpecs
             });
         }
 
-        [When(@"the body is specified twice - as a fault and then directly as a body entry")]
+        [When("the body is specified twice - as a fault and then directly as a body entry")]
         public void WhenTheBodyIsSpecifiedTwiceAsAFaultAndThenDirectlyAsABodyEntry()
         {
             base.ExpectedException.MessageShouldContainText = "Cannot add the body entry because a fault has already been specified";
@@ -214,7 +216,7 @@ namespace BehaviourSpecs
             });
         }
 
-        [When(@"the body is specified twice - directly as a body entry and then as a fault")]
+        [When("the body is specified twice - directly as a body entry and then as a fault")]
         public void WhenTheBodyIsSpecifiedTwice_DirectlyAsABodyEntryAndThenAsAFault()
         {
             base.ExpectedException.MessageShouldContainText = "Cannot set a fault because the body already has an entry";
@@ -229,7 +231,7 @@ namespace BehaviourSpecs
             });
         }
 
-        [When(@"a SOAP envelope with a body entry from an object with no XML attribute is built")]
+        [When("a SOAP envelope with a body entry from an object with no XML attribute is built")]
         public void WhenASOAPEnvelopeWithABodyEntryFromAnObjectWithNoXMLAttributeIsBuilt()
         {
             var obj = new XmlObjectWithNoAttribute
@@ -255,7 +257,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a body entry from an object with an XML Root attribute is built")]
+        [When("a SOAP envelope with a body entry from an object with an XML Root attribute is built")]
         public void WhenASOAPEnvelopeWithABodyEntryFromAnObjectWithAnXMLRootAttributeIsBuilt()
         {
             var obj = new XmlObjectWithRootAttribute
@@ -281,7 +283,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a body entry from an object with an XML Type attribute is built")]
+        [When("a SOAP envelope with a body entry from an object with an XML Type attribute is built")]
         public void WhenASOAPEnvelopeWithABodyEntryFromAnObjectWithAnXMLTypeAttributeIsBuilt()
         {
             var obj = new XmlObjectWithTypeAttribute
@@ -307,7 +309,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a body entry from an object with an XML Root attribute is built - with a given XML element name and blank namespace")]
+        [When("a SOAP envelope with a body entry from an object with an XML Root attribute is built - with a given XML element name and blank namespace")]
         public void WhenASOAPEnvelopeWithABodyEntryFromAnObjectWithAnXMLRootAttributeIsBuilt_WithAGivenXMLElementNameAndBlankNamespace()
         {
             var obj = new XmlObjectWithRootAttribute
@@ -333,7 +335,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a body entry from an object with an XML Root attribute is built - with a given XML element name and namespace")]
+        [When("a SOAP envelope with a body entry from an object with an XML Root attribute is built - with a given XML element name and namespace")]
         public void WhenASOAPEnvelopeWithABodyEntryFromAnObjectWithAnXMLRootAttributeIsBuilt_WithAGivenXMLElementNameAndNamespace()
         {
             var obj = new XmlObjectWithRootAttribute
@@ -361,7 +363,7 @@ namespace BehaviourSpecs
 
         #region Header
 
-        [When(@"a SOAP envelope with a header block from an object with no XML attribute is built")]
+        [When("a SOAP envelope with a header block from an object with no XML attribute is built")]
         public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithNoXMLAttributeIsBuilt()
         {
             var obj = new XmlObjectWithNoAttribute
@@ -387,7 +389,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a header block from an object with an XML Root attribute is built")]
+        [When("a SOAP envelope with a header block from an object with an XML Root attribute is built")]
         public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithAnXMLRootAttributeIsBuilt()
         {
             var obj = new XmlObjectWithRootAttribute
@@ -413,7 +415,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a header block from an object with an XML Type attribute is built")]
+        [When("a SOAP envelope with a header block from an object with an XML Type attribute is built")]
         public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithAnXMLTypeAttributeIsBuilt()
         {
             var obj = new XmlObjectWithTypeAttribute
@@ -439,7 +441,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a header block from an object with an XML Root attribute is built - with a given XML element name and blank namespace")]
+        [When("a SOAP envelope with a header block from an object with an XML Root attribute is built - with a given XML element name and blank namespace")]
         public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithAnXMLRootAttributeIsBuilt_WithAGivenXMLElementNameAndBlankNamespace()
         {
             var obj = new XmlObjectWithRootAttribute
@@ -465,7 +467,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a header block from an object with an XML Root attribute is built - with a given XML element name and namespace")]
+        [When("a SOAP envelope with a header block from an object with an XML Root attribute is built - with a given XML element name and namespace")]
         public void WhenASOAPEnvelopeWithAHeaderBlockFromAnObjectWithAnXMLRootAttributeIsBuilt_WithAGivenXMLElementNameAndNamespace()
         {
             var obj = new XmlObjectWithRootAttribute
@@ -491,7 +493,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a header block from an XML string is built")]
+        [When("a SOAP envelope with a header block from an XML string is built")]
         public void WhenASOAPEnvelopeWithAHeaderBlockFromAnXMLStringIsBuilt()
         {
             var obj = new XmlObjectWithRootAttribute
@@ -518,7 +520,7 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
-        [When(@"a SOAP envelope with a header block from an XContainer is built")]
+        [When("a SOAP envelope with a header block from an XContainer is built")]
         public void WhenASOAPEnvelopeWithAHeaderBlockFromAnXContainerIsBuilt()
         {
             var obj = new XmlObjectWithRootAttribute
@@ -551,13 +553,13 @@ namespace BehaviourSpecs
 
         #region Then
 
-        [Then(@"the SOAP envelope is correct")]
+        [Then("the SOAP envelope is correct")]
         public void ThenTheSOAPEnvelopeIsCorrect()
         {
             this.xmlTester.AssertActualXmlEqualsExpectedXml();
         }
 
-        [Then(@"there is an error notification about the body being specified more than once")]
+        [Then("there is an error notification about the body being specified more than once")]
         public void ThenThereIsAnErrorNotificationAboutTheBodyBeingSpecifiedMoreThanOnce()
         {
             AssertExpectedException();

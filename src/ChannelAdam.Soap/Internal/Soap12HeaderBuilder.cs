@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap12HeaderBuilder.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,6 @@
 
 namespace ChannelAdam.Soap.Internal
 {
-    using System;
     using System.Xml.Linq;
 
     using Abstractions;
@@ -28,7 +27,7 @@ namespace ChannelAdam.Soap.Internal
 
         private readonly ISoap12EnvelopeBuilder envelopeBuilder;
 
-        private XElement headerElement;
+        private XElement? headerElement;
 
         #endregion Private Fields
 
@@ -47,7 +46,7 @@ namespace ChannelAdam.Soap.Internal
         {
             get
             {
-                return this.headerElement ?? (this.headerElement = Soap12Maker.CreateSoapHeader());
+                return this.headerElement ??= Soap12Maker.CreateSoapHeader();
             }
         }
 
@@ -77,7 +76,7 @@ namespace ChannelAdam.Soap.Internal
 
         public ISoap12EnvelopeBuilder AddBlock(object toSerialise)
         {
-            return this.AddBlock(ObjectXmlSerialiser.SerialiseObject(toSerialise, null, null));
+            return this.AddBlock(ObjectXmlSerialiser.SerialiseObject(toSerialise, string.Empty, string.Empty));
         }
 
         public ISoap12EnvelopeBuilder AddBlock(object toSerialise, string toElementName, string toElementNamespace)
@@ -85,7 +84,7 @@ namespace ChannelAdam.Soap.Internal
             return this.AddBlock(ObjectXmlSerialiser.SerialiseObject(toSerialise, toElementName, toElementNamespace));
         }
 
-        public XContainer Build()
+        public XContainer? Build()
         {
             return this.headerElement;
         }

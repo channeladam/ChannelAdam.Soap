@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="ISoap11BodyBuilder.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,13 +35,15 @@ namespace ChannelAdam.Soap.Abstractions
         ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString);
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
-        ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string faultActor);
+        ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string? faultActor);
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
-        ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string faultActor, IEnumerable<XContainer> detailEntries);
+        ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string? faultActor, IEnumerable<XContainer>? detailEntries);
 
         ISoap11EnvelopeBuilder SetStandardSoapEncoding();
 
         ISoap11EnvelopeBuilder SetCustomSoapEncoding(string soapEncodingNamespace);
+
+        XContainer? Build();
     }
 }

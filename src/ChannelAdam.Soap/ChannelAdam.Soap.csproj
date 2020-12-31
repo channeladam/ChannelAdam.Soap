@@ -1,24 +1,51 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Description>A .NET Standard 2.0 library that provides a fluent API for building SOAP 1.1 and SOAP 1.2 messages.</Description>
+    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
     <Version>0.0.0</Version>
     <Authors>Adam Craven</Authors>
-    <Copyright>Copyright 2016-2018 Adam Craven</Copyright>
-    <PackageTags>SOAP 1.1, SOAP 1.2, fluent, maker, builder</PackageTags>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <Company>Adam Craven</Company>
+    <Product>ChannelAdam.Soap</Product>
+    <Description>A .NET library that provides a fluent API for building SOAP 1.1 and SOAP 1.2 messages.</Description>
+    <Copyright>Copyright 2018-2021 Adam Craven</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/channeladam/ChannelAdam.Soap</PackageProjectUrl>
     <RepositoryUrl>https://github.com/channeladam/ChannelAdam.Soap</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIconUrl>https://devzone.channeladam.com/img/channeladam/channeladam-logo.png</PackageIconUrl>
-    <PackageReleaseNotes>2.0.3 - Fixed memory leak with usage of leaky XmlSerializer constructor - thank you ejohnsonTKTNET
+    <PackageTags>SOAP 1.1, SOAP 1.2, fluent, maker, builder</PackageTags>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageReleaseNotes>
+3.0.0 - Multitarget .NET Standard 2.0 and .NET 5.0, enabled nullable reference types.
+2.0.3 - Fixed memory leak with usage of leaky XmlSerializer constructor - thank you ejohnsonTKTNET
 2.0.0 - Target .NET Standard 2.0, no strong name signing. Removed 4.0 and PCL targets.
 1.1.0 - Added overloads to ISoap1?Header.AddBlock() similar to ISoap1?Body.AddEntry()
 1.0.3 - Added build of a non-portable .NET 4.0 target. Portable requires .NET 4.0.3 as a minimum.
 1.0.2 - Fixed usage of multiple dispose pattern.
 1.0.1 - Fixed namespace of SoapBuilder.
-1.0.0 - Initial release.</PackageReleaseNotes>
+1.0.0 - Initial release.
+    </PackageReleaseNotes>
+    <IsPackable>true</IsPackable>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IncludeSource>true</IncludeSource>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>CS8600;CS8602;CS8603</WarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" $(Nullable) != 'enable' ">
+    <NoWarn>$(NoWarn);CS8632</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>

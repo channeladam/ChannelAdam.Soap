@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="ObjectXmlSerialiser.cs">
-//     Copyright (c) 2016-2018 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ namespace ChannelAdam.Soap
     {
         #region Private Fields
 
-        private static readonly ConcurrentDictionary<Tuple<Type, string, string>, XmlSerializer> SerialiserCache = new ConcurrentDictionary<Tuple<Type, string, string>, XmlSerializer>();
+        private static readonly ConcurrentDictionary<Tuple<Type, string, string>, XmlSerializer> SerialiserCache = new();
 
         #endregion Private Fields
 
@@ -104,7 +104,7 @@ namespace ChannelAdam.Soap
             return xmlAttributeOverrides;
         }
 
-        private static XmlRootAttribute CreateXmlRootAttribute(Type objectType, string elementName, string xmlNamespace = null)
+        private static XmlRootAttribute CreateXmlRootAttribute(Type objectType, string elementName, string? xmlNamespace = null)
         {
             var newRootAttribute = new XmlRootAttribute(elementName);
 
@@ -118,9 +118,9 @@ namespace ChannelAdam.Soap
             return newRootAttribute;
         }
 
-        private static string GetNamespaceFromExistingXmlAttribute(Type objectType)
+        private static string? GetNamespaceFromExistingXmlAttribute(Type objectType)
         {
-            string result = null;
+            string? result = null;
 
             var customAtts = objectType.GetCustomAttributes(false);
 
