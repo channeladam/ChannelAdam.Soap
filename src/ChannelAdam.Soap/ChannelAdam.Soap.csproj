@@ -14,7 +14,6 @@
     <RepositoryType>git</RepositoryType>
     <PackageIconUrl>https://devzone.channeladam.com/img/channeladam/channeladam-logo.png</PackageIconUrl>
     <PackageTags>SOAP 1.1, SOAP 1.2, fluent, maker, builder</PackageTags>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <PackageReleaseNotes>
 3.0.0 - Multitarget .NET Standard 2.0 and .NET 5.0, enabled nullable reference types.
 2.0.3 - Fixed memory leak with usage of leaky XmlSerializer constructor - thank you ejohnsonTKTNET
