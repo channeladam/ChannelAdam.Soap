@@ -80,23 +80,23 @@ namespace ChannelAdam.Soap
         #region CreateSoapFault
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
-        public static XElement CreateSoapFault(Soap11FaultCode code, string faultString)
+        public static XElement CreateSoapFault(Soap11FaultCode code, string faultString, string? prefix = null)
         {
-            return CreateSoapFault(code, faultString, null, null);
+            return CreateSoapFault(code, faultString, null, null, prefix);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
-        public static XElement CreateSoapFault(Soap11FaultCode code, string faultString, string? faultActor)
+        public static XElement CreateSoapFault(Soap11FaultCode code, string faultString, string? faultActor, string? prefix = null)
         {
-            return CreateSoapFault(code, faultString, faultActor, null);
+            return CreateSoapFault(code, faultString, faultActor, null, prefix);
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "As per the SOAP specification.")]
-        public static XElement CreateSoapFault(Soap11FaultCode code, string faultString, string? faultActor, IEnumerable<XContainer>? detailEntries)
+        public static XElement CreateSoapFault(Soap11FaultCode code, string faultString, string? faultActor, IEnumerable<XContainer>? detailEntries, string? prefix = null)
         {
             var fault = new XElement(Soap11Constants.SoapEnvelopeNamespace + "Fault");
 
-            fault.Add(new XElement(XNamespace.None + "faultcode", $"{NamespacePrefixConstants.SoapEnvelope}:{code}"));
+            fault.Add(new XElement(XNamespace.None + "faultcode", $"{(prefix ?? NamespacePrefixConstants.SoapEnvelope)}:{code}"));
             fault.Add(new XElement(XNamespace.None + "faultstring", faultString));
 
             if (!string.IsNullOrWhiteSpace(faultActor))
@@ -172,29 +172,29 @@ namespace ChannelAdam.Soap
 
         #region CreateSoapEnvelope
 
-        public static XElement CreateSoapEnvelope()
+        public static XElement CreateSoapEnvelope(string? prefix = null)
         {
-            return new XElement(Soap11Constants.SoapEnvelopeNamespace + "Envelope", CreateSoapEnvelopeAttribute());
+            return new XElement(Soap11Constants.SoapEnvelopeNamespace + "Envelope", CreateSoapEnvelopeAttribute(prefix));
         }
 
-        public static XElement CreateSoapEnvelope(string fromSoapBodyXml)
+        public static XElement CreateSoapEnvelope(string fromSoapBodyXml, string? prefix = null)
         {
-            return CreateSoapEnvelope(XElement.Parse(fromSoapBodyXml));
+            return CreateSoapEnvelope(XElement.Parse(fromSoapBodyXml), prefix);
         }
 
-        public static XElement CreateSoapEnvelope(string fromSoapHeaderXml, string fromSoapBodyXml)
+        public static XElement CreateSoapEnvelope(string fromSoapHeaderXml, string fromSoapBodyXml, string? prefix = null)
         {
-            return CreateSoapEnvelope(XElement.Parse(fromSoapHeaderXml), XElement.Parse(fromSoapBodyXml));
+            return CreateSoapEnvelope(XElement.Parse(fromSoapHeaderXml), XElement.Parse(fromSoapBodyXml), prefix);
         }
 
-        public static XElement CreateSoapEnvelope(XContainer? fromSoapBodyNode)
+        public static XElement CreateSoapEnvelope(XContainer? fromSoapBodyNode, string? prefix = null)
         {
-            return CreateSoapEnvelope(CreateSoapHeader(), fromSoapBodyNode);
+            return CreateSoapEnvelope(CreateSoapHeader(), fromSoapBodyNode, prefix);
         }
 
-        public static XElement CreateSoapEnvelope(XContainer? fromSoapHeaderNode, XContainer? fromSoapBodyNode)
+        public static XElement CreateSoapEnvelope(XContainer? fromSoapHeaderNode, XContainer? fromSoapBodyNode, string? prefix = null)
         {
-            var envelope = CreateSoapEnvelope();
+            var envelope = CreateSoapEnvelope(prefix);
 
             if (fromSoapHeaderNode != null)
             {
@@ -275,9 +275,9 @@ namespace ChannelAdam.Soap
 
         #region Private Methods
 
-        private static XAttribute CreateSoapEnvelopeAttribute()
+        private static XAttribute CreateSoapEnvelopeAttribute(string? prefix)
         {
-            return new XAttribute(XNamespace.Xmlns + NamespacePrefixConstants.SoapEnvelope, Soap11Constants.SoapEnvelopeNamespace);
+            return new XAttribute(XNamespace.Xmlns + (prefix ?? NamespacePrefixConstants.SoapEnvelope), Soap11Constants.SoapEnvelopeNamespace);
         }
 
         #endregion Private Methods

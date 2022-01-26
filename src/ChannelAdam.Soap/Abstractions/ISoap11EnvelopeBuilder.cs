@@ -21,6 +21,8 @@ namespace ChannelAdam.Soap.Abstractions
 
     public interface ISoap11EnvelopeBuilder
     {
+        ISoap11EnvelopeBuilder SetNamespacePrefix(string prefix);
+
         ISoap11BodyBuilder WithBody { get; }
 
         ISoap11HeaderBuilder WithHeader { get; }

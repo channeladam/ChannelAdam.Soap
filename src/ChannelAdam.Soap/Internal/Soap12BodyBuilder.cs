@@ -30,14 +30,16 @@ namespace ChannelAdam.Soap.Internal
 
         private XElement? bodyElement;
         private readonly ISoap12EnvelopeBuilder envelopeBuilder;
+        private readonly string? prefix;
 
         #endregion Private Fields
 
         #region Internal Constructors
 
-        internal Soap12BodyBuilder(ISoap12EnvelopeBuilder envelopeBuilder)
+        internal Soap12BodyBuilder(ISoap12EnvelopeBuilder envelopeBuilder, string? prefix)
         {
             this.envelopeBuilder = envelopeBuilder;
+            this.prefix = prefix;
         }
 
         #endregion Internal Constructors
@@ -105,7 +107,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, reason));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, reason, this.prefix));
             return this.envelopeBuilder;
         }
 
@@ -113,7 +115,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCode, reason));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCode, reason, this.prefix));
             return this.envelopeBuilder;
         }
 
@@ -121,7 +123,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, this.prefix));
             return this.envelopeBuilder;
         }
 
@@ -129,7 +131,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, detailEntries));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, detailEntries, this.prefix));
             return this.envelopeBuilder;
         }
 
@@ -146,7 +148,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, this.prefix));
             return this.envelopeBuilder;
         }
 
@@ -154,7 +156,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, detailEntries));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, detailEntries, this.prefix));
             return this.envelopeBuilder;
         }
 
@@ -162,7 +164,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, this.prefix));
             return this.envelopeBuilder;
         }
 
@@ -170,7 +172,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, this.prefix));
             return this.envelopeBuilder;
         }
 
@@ -178,7 +180,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, this.prefix));
             return this.envelopeBuilder;
         }
 

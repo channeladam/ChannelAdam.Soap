@@ -177,6 +177,106 @@ namespace BehaviourSpecs
             this.xmlTester.ArrangeExpectedXml(expectedXml);
         }
 
+        [When("a SOAP envelope with a customised soap namespace prefix is built")]
+        public void WhenASOAPEnvelopeWithACustomisedSoapNamespacePrefixIsBuilt()
+        {
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .SetNamespacePrefix("soap")
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            const string expectedXml =
+@"<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope""/>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When("a SOAP envelope with a customised soap namespace prefix and encoding is built")]
+        public void WhenASOAPEnvelopeWithACustomisedSoapNamespacePrefixAndCustomisedSoapEncodingIsBuilt()
+        {
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .SetNamespacePrefix("soap")
+                .WithBody.SetCustomSoapEncoding("custom soap encoding namespace!!")
+                .WithBody.AddEntry("<a>hello</a>")
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            const string expectedXml =
+@"<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope"">
+  <soap:Body soap:soapEncoding=""custom soap encoding namespace!!"">
+    <a>hello</a>
+  </soap:Body>
+</soap:Envelope>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When("a SOAP envelope with a header, body and a customised soap namespace prefix is built")]
+        public void WhenASOAPEnvelopeWithAHeaderABodyAndCustomisedSoapNamespacePrefixIsBuilt()
+        {
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                .SetNamespacePrefix("soap")
+                .WithHeader.AddAction("myActionOhYeah!")
+                .WithBody.AddEntry("<a>hello</a>")
+                .Build()
+                .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            const string expectedXml =
+@"<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope"">
+  <soap:Header>
+    <wsa:Action xmlns:wsa=""http://www.w3.org/2005/08/addressing"">myActionOhYeah!</wsa:Action>
+  </soap:Header>
+  <soap:Body>
+    <a>hello</a>
+  </soap:Body>
+</soap:Envelope>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
+        [When("a SOAP envelope with a fault and a customised soap namespace prefix is built")]
+        public void WhenASOAPEnvelopeWithAFaultAndACustomisedSoapNamespacePrefixIsBuilt()
+        {
+            this.soapEnvelope = SoapBuilder.CreateSoap12Envelope()
+                                    .SetNamespacePrefix("soap")
+                                    .WithBody.SetFault(
+                                        Soap12FaultCode.Sender,
+                                        "http://subcode.namespace/stuff",
+                                        "subcodeOops",
+                                        "reason it was me!",
+                                        new XContainer[] { XElement.Parse("<myDetail1>detail 1</myDetail1>"), XElement.Parse("<myDetail2>detail 2</myDetail2>") })
+                                    .Build()
+                                    .ToString();
+
+            this.xmlTester.ArrangeActualXml(this.soapEnvelope);
+
+            const string expectedXml =
+@"
+<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope"" xmlns:xml=""http://www.w3.org/XML/1998/namespace"">
+  <soap:Body>
+    <soap:Fault>
+      <soap:Code>
+        <soap:Value>soap:Sender</soap:Value>
+        <soap:Subcode>
+          <soap:Value xmlns:sc=""http://subcode.namespace/stuff"">sc:subcodeOops</soap:Value>
+        </soap:Subcode>
+      </soap:Code>
+      <soap:Reason>
+        <soap:Text xml:lang=""en"">reason it was me!</soap:Text>
+      </soap:Reason>
+      <soap:Detail>
+        <myDetail1>detail 1</myDetail1>
+        <myDetail2>detail 2</myDetail2>
+      </soap:Detail>
+    </soap:Fault>
+  </soap:Body>
+</soap:Envelope>";
+            this.xmlTester.ArrangeExpectedXml(expectedXml);
+        }
+
         [When("more than one non-fault body entry is added")]
         public void WhenTheBodyIsSpecifiedTwice()
         {
