@@ -38,7 +38,6 @@ namespace ChannelAdam.Soap
         {
             var settings = new XmlWriterSettings
             {
-                OmitXmlDeclaration = true,
                 Indent = true
             };
 
