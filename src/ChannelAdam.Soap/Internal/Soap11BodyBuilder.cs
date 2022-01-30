@@ -30,16 +30,14 @@ namespace ChannelAdam.Soap.Internal
 
         private XElement? bodyElement;
         private readonly ISoap11EnvelopeBuilder envelopeBuilder;
-        private readonly string? prefix;
 
         #endregion Private Fields
 
         #region Internal Constructors
 
-        internal Soap11BodyBuilder(ISoap11EnvelopeBuilder envelopeBuilder, string? prefix)
+        internal Soap11BodyBuilder(ISoap11EnvelopeBuilder envelopeBuilder)
         {
             this.envelopeBuilder = envelopeBuilder;
-            this.prefix = prefix;
         }
 
         #endregion Internal Constructors
@@ -107,7 +105,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, this.prefix));
+            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, this.envelopeBuilder.GetNamespacePrefix));
             return this.envelopeBuilder;
         }
 
@@ -122,7 +120,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, this.prefix));
+            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, this.envelopeBuilder.GetNamespacePrefix));
             return this.envelopeBuilder;
         }
 
@@ -138,7 +136,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, detailEntries, this.prefix));
+            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, detailEntries, this.envelopeBuilder.GetNamespacePrefix));
             return this.envelopeBuilder;
         }
 

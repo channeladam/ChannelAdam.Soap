@@ -27,6 +27,8 @@ namespace ChannelAdam.Soap.Abstractions
 
         ISoap11HeaderBuilder WithHeader { get; }
 
+        string? GetNamespacePrefix { get; }
+
         XContainer Build();
     }
 }
