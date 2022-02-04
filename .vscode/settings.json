@@ -1,3 +1,9 @@
 {
-    "cucumberautocomplete.steps": ["**/BehaviourSpecs/*"]
+    "cucumberautocomplete.steps": [
+        "**/BehaviourSpecs/*"
+    ],
+    "cSpell.words": [
+        "Serialise",
+        "Serialiser"
+    ]
 }
