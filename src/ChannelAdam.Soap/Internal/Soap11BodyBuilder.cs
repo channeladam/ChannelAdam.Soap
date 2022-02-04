@@ -105,7 +105,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, this.envelopeBuilder.GetNamespacePrefix));
+            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, this.envelopeBuilder.NamespacePrefix));
             return this.envelopeBuilder;
         }
 
@@ -120,7 +120,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, this.envelopeBuilder.GetNamespacePrefix));
+            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, this.envelopeBuilder.NamespacePrefix));
             return this.envelopeBuilder;
         }
 
@@ -136,7 +136,7 @@ namespace ChannelAdam.Soap.Internal
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, detailEntries, this.envelopeBuilder.GetNamespacePrefix));
+            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, detailEntries, this.envelopeBuilder.NamespacePrefix));
             return this.envelopeBuilder;
         }
 

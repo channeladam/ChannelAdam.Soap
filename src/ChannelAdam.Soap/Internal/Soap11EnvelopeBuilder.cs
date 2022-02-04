@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap11EnvelopeBuilder.cs">
-//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2022 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,13 +57,13 @@ namespace ChannelAdam.Soap.Internal
             }
         }
 
-        public string? GetNamespacePrefix
+        public string? NamespacePrefix
         {
             get
             {
                 return this.envelopeNamespacePrefix;
             }
-        } 
+        }
 
         #endregion Public Properties
 
