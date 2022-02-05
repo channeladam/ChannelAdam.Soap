@@ -28,6 +28,21 @@ Scenario: MakingSoap11 - 051 - Should allow the SOAP Encoding namespace to be cu
 When a SOAP envelope with a customised soap encoding is built
 Then the SOAP envelope is correct
 
+Scenario: MakingSoap11 - 060 - Should allow the SOAP namespace prefix to be customised
+When a SOAP envelope with a customised soap namespace prefix is built
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 061 - Should allow the SOAP namespace prefix and encoding to be customised
+When a SOAP envelope with a customised soap namespace prefix and encoding is built
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 062 - Should create a well-formatted SOAP 1.1 envelope with a header and body and allow the SOAP namespace prefix to be customised
+When a SOAP envelope with a header, body and a customised soap namespace prefix is built
+Then the SOAP envelope is correct
+
+Scenario: MakingSoap11 - 063 - Should create well-formatted SOAP 1.1 envelope with a fault and allow the SOAP namespace prefix to be customised
+When a SOAP envelope with a fault and a customised soap namespace prefix is built
+Then the SOAP envelope is correct
 
 # Usage Rules
 

@@ -1,3 +1,13 @@
 {
-    "cucumberautocomplete.steps": ["**/BehaviourSpecs/*"]
+    "cucumberautocomplete.steps": [
+        "**/BehaviourSpecs/*"
+    ],
+    "cSpell.words": [
+        "ASOAP",
+        "Behaviour",
+        "cref",
+        "customised",
+        "Serialise",
+        "Serialiser"
+    ]
 }

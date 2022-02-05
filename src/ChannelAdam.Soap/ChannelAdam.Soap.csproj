@@ -15,7 +15,7 @@
     <PackageIconUrl>https://devzone.channeladam.com/img/channeladam/channeladam-logo.png</PackageIconUrl>
     <PackageTags>SOAP 1.1, SOAP 1.2, fluent, maker, builder</PackageTags>
     <PackageReleaseNotes>
-3.1.0 - Added .NET 6.0 target, @mubaarakhassan added support for custom namespace prefix of SOAP envelope.
+3.1.0 - Added .NET 6.0 target, added support for custom namespace prefix of SOAP envelope (initial contribution from @mubaarakhassan).
 3.0.0 - Multitarget .NET Standard 2.0 and .NET 5.0, enabled nullable reference types.
 2.0.3 - Fixed memory leak with usage of leaky XmlSerializer constructor - thank you ejohnsonTKTNET
 2.0.0 - Target .NET Standard 2.0, no strong name signing. Removed 4.0 and PCL targets.

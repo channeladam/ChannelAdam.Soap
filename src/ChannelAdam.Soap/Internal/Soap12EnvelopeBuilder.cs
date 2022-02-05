@@ -27,6 +27,7 @@ namespace ChannelAdam.Soap.Internal
 
         private Soap12BodyBuilder? bodyBuilder;
         private Soap12HeaderBuilder? headerBuilder;
+        private string? envelopeNamespacePrefix;
 
         #endregion Private Fields
 
@@ -40,30 +41,24 @@ namespace ChannelAdam.Soap.Internal
 
         #region Public Properties
 
-        public ISoap12BodyBuilder WithBody
-        {
-            get
-            {
-                return this.bodyBuilder ??= new Soap12BodyBuilder(this);
-            }
-        }
+        public string? NamespacePrefix => this.envelopeNamespacePrefix;
 
-        public ISoap12HeaderBuilder WithHeader
-        {
-            get
-            {
-                return this.headerBuilder ??= new Soap12HeaderBuilder(this);
-            }
-        }
+        public ISoap12BodyBuilder WithBody => this.bodyBuilder ??= new Soap12BodyBuilder(this);
+
+        public ISoap12HeaderBuilder WithHeader => this.headerBuilder ??= new Soap12HeaderBuilder(this);
 
         #endregion Public Properties
 
         #region Public Methods
 
-        public XContainer Build()
+        public ISoap12EnvelopeBuilder SetNamespacePrefix(string prefix)
         {
-            return Soap12Maker.CreateSoapEnvelope(this.headerBuilder?.Build(), this.bodyBuilder?.Build());
+            this.envelopeNamespacePrefix = prefix;
+            return this;
         }
+
+        public XContainer Build() =>
+            Soap12Maker.CreateSoapEnvelope(this.headerBuilder?.Build(), this.bodyBuilder?.Build(), this.envelopeNamespacePrefix);
 
         #endregion Public Methods
     }

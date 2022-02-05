@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap11EnvelopeBuilder.cs">
-//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2022 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,6 +27,7 @@ namespace ChannelAdam.Soap.Internal
 
         private Soap11BodyBuilder? bodyBuilder;
         private Soap11HeaderBuilder? headerBuilder;
+        private string? envelopeNamespacePrefix;
 
         #endregion Private Fields
 
@@ -40,29 +41,25 @@ namespace ChannelAdam.Soap.Internal
 
         #region Public Properties
 
-        public ISoap11BodyBuilder WithBody
-        {
-            get
-            {
-                return this.bodyBuilder ??= new Soap11BodyBuilder(this);
-            }
-        }
+        public string? NamespacePrefix => this.envelopeNamespacePrefix;
 
-        public ISoap11HeaderBuilder WithHeader
-        {
-            get
-            {
-                return this.headerBuilder ??= new Soap11HeaderBuilder(this);
-            }
-        }
+        public ISoap11BodyBuilder WithBody => this.bodyBuilder ??= new Soap11BodyBuilder(this);
+
+        public ISoap11HeaderBuilder WithHeader => this.headerBuilder ??= new Soap11HeaderBuilder(this);
 
         #endregion Public Properties
 
         #region Public Methods
 
+        public ISoap11EnvelopeBuilder SetNamespacePrefix(string prefix)
+        {
+            this.envelopeNamespacePrefix = prefix;
+            return this;
+        }
+
         public XContainer Build()
         {
-            return Soap11Maker.CreateSoapEnvelope(this.headerBuilder?.Build(), this.bodyBuilder?.Build());
+            return Soap11Maker.CreateSoapEnvelope(this.headerBuilder?.Build(), this.bodyBuilder?.Build(), this.envelopeNamespacePrefix);
         }
 
         #endregion Public Methods

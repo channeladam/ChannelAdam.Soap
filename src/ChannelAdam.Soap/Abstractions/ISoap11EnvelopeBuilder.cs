@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="ISoap11EnvelopeBuilder.cs">
-//     Copyright (c) 2016 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2022 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,10 @@ namespace ChannelAdam.Soap.Abstractions
 
     public interface ISoap11EnvelopeBuilder
     {
+        string? NamespacePrefix { get; }
+
+        ISoap11EnvelopeBuilder SetNamespacePrefix(string prefix);
+
         ISoap11BodyBuilder WithBody { get; }
 
         ISoap11HeaderBuilder WithHeader { get; }
