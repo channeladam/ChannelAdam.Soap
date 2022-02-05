@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap12BodyBuilder.cs">
-//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2022 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -101,35 +101,20 @@ namespace ChannelAdam.Soap.Internal
         /// <param name="code">The fault code. <see cref="Soap12FaultCode"/>.</param>
         /// <param name="reason">The fault reason.</param>
         /// <returns>The SOAP 1.2 Envelope Builder.</returns>
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string reason)
-        {
-            this.ValidateBodyForSettingAFault();
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string reason) =>
+            SetFault(code, subCodeNamespace: null, subCode: null, reason, detailEntries: null);
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, reason, this.envelopeBuilder.GetNamespacePrefix));
-            return this.envelopeBuilder;
-        }
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string? subCode, string reason) =>
+            SetFault(code, subCodeNamespace: null, subCode, reason, detailEntries: null);
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, string? subCode, string reason)
-        {
-            this.ValidateBodyForSettingAFault();
-
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCode, reason, this.envelopeBuilder.GetNamespacePrefix));
-            return this.envelopeBuilder;
-        }
-
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason)
-        {
-            this.ValidateBodyForSettingAFault();
-
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, this.envelopeBuilder.GetNamespacePrefix));
-            return this.envelopeBuilder;
-        }
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason) =>
+            SetFault(code, subCodeNamespace, subCode, reason, detailEntries: null);
 
         public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries)
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, detailEntries, this.envelopeBuilder.GetNamespacePrefix));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, detailEntries, this.envelopeBuilder.NamespacePrefix));
             return this.envelopeBuilder;
         }
 
@@ -142,43 +127,23 @@ namespace ChannelAdam.Soap.Internal
         /// <param name="reason">The reason for the fault.</param>
         /// <param name="reasonXmlLanguage">The xml:lang language for the text in the fault.</param>
         /// <returns>The SOAP 1.2 Envelope Builder.</returns>
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage)
-        {
-            this.ValidateBodyForSettingAFault();
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage) =>
+            SetFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries: null);
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, this.envelopeBuilder.GetNamespacePrefix));
-            return this.envelopeBuilder;
-        }
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries) =>
+            SetFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries);
 
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries)
-        {
-            this.ValidateBodyForSettingAFault();
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node) =>
+            SetFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role: null, detailEntries: null);
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, detailEntries, this.envelopeBuilder.GetNamespacePrefix));
-            return this.envelopeBuilder;
-        }
-
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node)
-        {
-            this.ValidateBodyForSettingAFault();
-
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, this.envelopeBuilder.GetNamespacePrefix));
-            return this.envelopeBuilder;
-        }
-
-        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role)
-        {
-            this.ValidateBodyForSettingAFault();
-
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, this.envelopeBuilder.GetNamespacePrefix));
-            return this.envelopeBuilder;
-        }
+        public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role) =>
+            SetFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries: null);
 
         public ISoap12EnvelopeBuilder SetFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries)
         {
             this.ValidateBodyForSettingAFault();
 
-            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, this.envelopeBuilder.GetNamespacePrefix));
+            this.BodyElement.Add(Soap12Maker.CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, this.envelopeBuilder.NamespacePrefix));
             return this.envelopeBuilder;
         }
 

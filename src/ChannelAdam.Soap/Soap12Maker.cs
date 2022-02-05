@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap12Maker.cs">
-//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2022 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,151 +36,132 @@ namespace ChannelAdam.Soap
 
         #region CreateSoapEnvelopeWithFault
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, string reason, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, reason, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, string reason) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace: null, subCode: null, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, string? subCode, string reason, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCode, reason, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, string? subCode, string reason) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace: null, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, null, null, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, null, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, null, null, detailEntries, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, string? envelopeNamespacePrefix) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries: null, envelopeNamespacePrefix);
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, null, null, detailEntries, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, envelopeNamespacePrefix)));
-        }
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries, envelopeNamespacePrefix: null);
+
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries, envelopeNamespacePrefix);
+
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapEnvelopeWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, envelopeNamespacePrefix: null);
+
+        public static XElement CreateSoapEnvelopeWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix) =>
+            CreateSoapEnvelope(CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, envelopeNamespacePrefix)));
 
         #endregion
 
         #region CreateSoapBodyWithFault
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, string reason)
-        {
-            return CreateSoapBody(CreateSoapFault(code, reason));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, string reason) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace: null, subCode: null, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, string? subCode, string reason)
-        {
-            return CreateSoapBody(CreateSoapFault(code, subCode, reason));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, string? subCode, string reason) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace: null, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason)
-        {
-            return CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage)
-        {
-            return CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node)
-        {
-            return CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, null, null));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role)
-        {
-            return CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, null));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries)
-        {
-            return CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, null, null, detailEntries));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, string? envelopeNamespacePrefix) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries: null, envelopeNamespacePrefix);
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries)
-        {
-            return CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, null, null, detailEntries));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries)
-        {
-            return CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries));
-        }
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries, envelopeNamespacePrefix);
+
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries, envelopeNamespacePrefix: null);
+
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries, envelopeNamespacePrefix);
+
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapBodyWithFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, envelopeNamespacePrefix: null);
+
+        public static XElement CreateSoapBodyWithFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix) =>
+            CreateSoapBody(CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, envelopeNamespacePrefix));
 
         #endregion CreateSoapBodyWithFault
 
         #region CreateSoapFault
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, string reason, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapFault(code, null, null, reason, envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapFault(Soap12FaultCode code, string reason) =>
+            CreateSoapFault(code, subCodeNamespace: null, subCode: null, reason);
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, string? subCode, string reason, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapFault(code, (XNamespace?)null, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, null, null, null, envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapFault(Soap12FaultCode code, string? subCode, string reason) =>
+            CreateSoapFault(code, subCodeNamespace: null, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, null, null, null, envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, null, null, null, envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, null, null, envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role: null, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, null, envelopeNamespacePrefix);
-        }
+       public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries: null, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, null, null, detailEntries, envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, string? envelopeNamespacePrefix) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries: null, envelopeNamespacePrefix);
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, null, null, detailEntries, envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix = null)
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, node: null, role: null, detailEntries, envelopeNamespacePrefix);
+
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries, envelopeNamespacePrefix: null);
+
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node: null, role: null, detailEntries, envelopeNamespacePrefix);
+
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries) =>
+            CreateSoapFault(code, subCodeNamespace, subCode, reason, reasonXmlLanguage, node, role, detailEntries, envelopeNamespacePrefix: null);
+
+        public static XElement CreateSoapFault(Soap12FaultCode code, XNamespace? subCodeNamespace, string? subCode, string reason, string reasonXmlLanguage, string? node, string? role, IEnumerable<XContainer>? detailEntries, string? envelopeNamespacePrefix)
         {
             var fault = new XElement(Soap12Constants.SoapEnvelopeNamespace + "Fault");
 
             var codeElements = new List<XElement>
             {
-                new XElement(Soap12Constants.SoapEnvelopeNamespace + "Value", $"{(envelopeNamespacePrefix ?? NamespacePrefixConstants.SoapEnvelope)}:{code}")
+                new XElement(Soap12Constants.SoapEnvelopeNamespace + "Value", $"{envelopeNamespacePrefix ?? NamespacePrefixConstants.SoapEnvelope}:{code}")
             };
 
             if (!string.IsNullOrWhiteSpace(subCode))
@@ -294,35 +275,40 @@ namespace ChannelAdam.Soap
             return element;
         }
 
-        #endregion CreatSoapHeader
+        #endregion CreateSoapHeader
 
         #region CreateSoapEnvelope
 
-        public static XElement CreateSoapEnvelope(string? envelopeNamespacePrefix = null)
+        public static XElement CreateSoapEnvelope() => CreateSoapEnvelopeWithNamespacePrefix(null);
+
+        public static XElement CreateSoapEnvelopeWithNamespacePrefix(string? envelopeNamespacePrefix)
         {
             var envelope = new XElement(Soap12Constants.SoapEnvelopeNamespace + "Envelope", CreateSoapEnvelopeAttribute(envelopeNamespacePrefix));
             SetXmlNamespaceAttribute(envelope);
             return envelope;
         }
 
-        public static XElement CreateSoapEnvelope(string fromSoapBodyXml, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(XElement.Parse(fromSoapBodyXml), envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapEnvelope(string fromSoapBodyXml) =>
+            CreateSoapEnvelope(XElement.Parse(fromSoapBodyXml), envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelope(string fromSoapHeaderXml, string fromSoapBodyXml, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(XElement.Parse(fromSoapHeaderXml), XElement.Parse(fromSoapBodyXml), envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapEnvelope(string fromSoapHeaderXml, string fromSoapBodyXml) =>
+            CreateSoapEnvelope(fromSoapHeaderXml, fromSoapBodyXml, envelopeNamespacePrefix: null);
 
-        public static XElement CreateSoapEnvelope(XContainer? fromSoapBodyNode, string? envelopeNamespacePrefix = null)
-        {
-            return CreateSoapEnvelope(CreateSoapHeader(), fromSoapBodyNode, envelopeNamespacePrefix);
-        }
+        public static XElement CreateSoapEnvelope(string fromSoapHeaderXml, string fromSoapBodyXml, string? envelopeNamespacePrefix) =>
+            CreateSoapEnvelope(XElement.Parse(fromSoapHeaderXml), XElement.Parse(fromSoapBodyXml), envelopeNamespacePrefix);
 
-        public static XElement CreateSoapEnvelope(XContainer? fromSoapHeaderNode, XContainer? fromSoapBodyNode, string? envelopeNamespacePrefix = null)
+        public static XElement CreateSoapEnvelope(XContainer? fromSoapBodyNode) =>
+            CreateSoapEnvelope(fromSoapBodyNode, envelopeNamespacePrefix: null);
+
+        public static XElement CreateSoapEnvelope(XContainer? fromSoapBodyNode, string? envelopeNamespacePrefix) =>
+            CreateSoapEnvelope(CreateSoapHeader(), fromSoapBodyNode, envelopeNamespacePrefix);
+
+        public static XElement CreateSoapEnvelope(XContainer? fromSoapHeaderNode, XContainer? fromSoapBodyNode) =>
+            CreateSoapEnvelope(fromSoapHeaderNode, fromSoapBodyNode, envelopeNamespacePrefix: null);
+
+        public static XElement CreateSoapEnvelope(XContainer? fromSoapHeaderNode, XContainer? fromSoapBodyNode, string? envelopeNamespacePrefix)
         {
-            var envelope = CreateSoapEnvelope(envelopeNamespacePrefix);
+            var envelope = CreateSoapEnvelopeWithNamespacePrefix(envelopeNamespacePrefix);
 
             if (fromSoapHeaderNode != null)
             {

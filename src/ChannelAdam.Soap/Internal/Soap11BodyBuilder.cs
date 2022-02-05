@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright file="Soap11BodyBuilder.cs">
-//     Copyright (c) 2016-2021 Adam Craven. All rights reserved.
+//     Copyright (c) 2016-2022 Adam Craven. All rights reserved.
 // </copyright>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -101,13 +101,8 @@ namespace ChannelAdam.Soap.Internal
         /// <param name="code">The fault code. <see cref="Soap11FaultCode"/>.</param>
         /// <param name="faultString">The fault string.</param>
         /// <returns>The SOAP 1.1 Envelope Builder.</returns>
-        public ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString)
-        {
-            this.ValidateBodyForSettingAFault();
-
-            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, this.envelopeBuilder.NamespacePrefix));
-            return this.envelopeBuilder;
-        }
+        public ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString) =>
+            SetFault(code, faultString, faultActor: null, detailEntries: null);
 
         /// <summary>
         /// Specify the details about a fault.
@@ -116,13 +111,8 @@ namespace ChannelAdam.Soap.Internal
         /// <param name="faultString">The fault string.</param>
         /// <param name="faultActor">The fault actor.</param>
         /// <returns>The SOAP 1.1 Envelope Builder.</returns>
-        public ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string? faultActor)
-        {
-            this.ValidateBodyForSettingAFault();
-
-            this.BodyElement.Add(Soap11Maker.CreateSoapFault(code, faultString, faultActor, this.envelopeBuilder.NamespacePrefix));
-            return this.envelopeBuilder;
-        }
+        public ISoap11EnvelopeBuilder SetFault(Soap11FaultCode code, string faultString, string? faultActor) =>
+            SetFault(code, faultString, faultActor, detailEntries: null);
 
         /// <summary>
         /// Specify the details about a fault.
