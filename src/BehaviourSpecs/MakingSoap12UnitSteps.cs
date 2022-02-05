@@ -190,6 +190,8 @@ namespace BehaviourSpecs
             const string expectedXml =
 @"<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope""/>";
             this.xmlTester.ArrangeExpectedXml(expectedXml);
+
+            LogAssert.IsTrue("Has expected envelope prefix", this.soapEnvelope.StartsWith("<soap:Envelope "));
         }
 
         [When("a SOAP envelope with a customised soap namespace prefix and encoding is built")]
@@ -211,6 +213,8 @@ namespace BehaviourSpecs
   </soap:Body>
 </soap:Envelope>";
             this.xmlTester.ArrangeExpectedXml(expectedXml);
+
+            LogAssert.IsTrue("Has expected envelope prefix", this.soapEnvelope.StartsWith("<soap:Envelope "));
         }
 
         [When("a SOAP envelope with a header, body and a customised soap namespace prefix is built")]
@@ -235,6 +239,8 @@ namespace BehaviourSpecs
   </soap:Body>
 </soap:Envelope>";
             this.xmlTester.ArrangeExpectedXml(expectedXml);
+
+            LogAssert.IsTrue("Has expected envelope prefix", this.soapEnvelope.StartsWith("<soap:Envelope "));
         }
 
         [When("a SOAP envelope with a fault and a customised soap namespace prefix is built")]
@@ -275,6 +281,8 @@ namespace BehaviourSpecs
   </soap:Body>
 </soap:Envelope>";
             this.xmlTester.ArrangeExpectedXml(expectedXml);
+
+            LogAssert.IsTrue("Has expected envelope prefix", this.soapEnvelope.StartsWith("<soap:Envelope "));
         }
 
         [When("more than one non-fault body entry is added")]
